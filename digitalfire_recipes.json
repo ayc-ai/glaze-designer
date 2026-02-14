@@ -1,0 +1,1552 @@
+[
+  {
+    "code": "G1214M",
+    "name": "20x5 Cone 6 Base Glossy Glaze",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Wollastonite",
+        "percent": 20
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Custer Feldspar",
+        "percent": 20
+      },
+      {
+        "name": "EPK",
+        "percent": 20
+      },
+      {
+        "name": "Silica",
+        "percent": 20
+      }
+    ],
+    "umf": null,
+    "notes": "This was originally developed during the early 1980s to demonstrate principles of glaze chemistry in creating a glaze base sympathetic to the development of chrome-tin pinks and maroons. Articles a videos about this were used as selling tools for Digitalfire Insight software. This recipe was developed over the years and had many versions. We now recommend G2926B as a base instead."
+  },
+  {
+    "code": "G1214W",
+    "name": "Cone 6 Transparent Base",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Wollastonite",
+        "percent": 10
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 25
+      },
+      {
+        "name": "EP Kaolin",
+        "percent": 25
+      },
+      {
+        "name": "Silica",
+        "percent": 25
+      },
+      {
+        "name": "F-4 Feldspar",
+        "percent": 15
+      }
+    ],
+    "umf": null,
+    "notes": "More information is available in the articles section on how and why this recipe was developed from the 20x5 G1214M base recipe. This recipe was later superceded by others, ultimately leading to G2926B."
+  },
+  {
+    "code": "G1214Z1",
+    "name": "Cone 6 Calcium Matte v2",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Wollastonite",
+        "percent": 27
+      },
+      {
+        "name": "Ferro Frit 3124",
+        "percent": 36
+      },
+      {
+        "name": "EPK",
+        "percent": 20
+      },
+      {
+        "name": "Silica",
+        "percent": 5
+      },
+      {
+        "name": "Calcined Kaolin",
+        "percent": 13
+      }
+    ],
+    "umf": null,
+    "notes": "This is an adjustment to the original G1214Z recipe. The chemistry of this is the same, but the 37 raw kaolin in the original has been split to a combination of raw:calcined kaolin to reduce drying shrinkage (preventing cracking as it dries and crawling during firing). If unavailable, you can make your own calcined kaolin by roasting the powder in a container in a bisque firing. Like G1214Z, this achieves a mat surface by incorporating a very high percentage of CaO in the chemistry. While visual"
+  },
+  {
+    "code": "G1215U",
+    "name": "Low Expansion Glossy Clear Cone 6",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "EPK",
+        "percent": 14.2
+      },
+      {
+        "name": "Silica",
+        "percent": 26.4
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 14.7
+      },
+      {
+        "name": "F-4 Feldspar",
+        "percent": 24.4
+      },
+      {
+        "name": "Ferro Frit 3249",
+        "percent": 20.3
+      }
+    ],
+    "umf": null,
+    "notes": "The original impetus to create this recipe was to reduce the thermal expansion of the G1214M and G1215W recipes to work better on porcelains (the others craze). Although a clear transparent glaze, the higher MgO content can produce dimples in the surface if fired too quickly. The higher MgO also affects the color response (this glaze does not work with chrome-tin pink and maroon stains). Keep in mind that you cannot expect one glaze to work well on both porcelain and stonewares. This fires to a "
+  },
+  {
+    "code": "G1216L",
+    "name": "Transparent for Cone 6 Porcelains",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Minspar",
+        "percent": 8.2
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 10.3
+      },
+      {
+        "name": "Ferro Frit 3124",
+        "percent": 22.7
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 14.4
+      },
+      {
+        "name": "EPK",
+        "percent": 18.6
+      },
+      {
+        "name": "Talc",
+        "percent": 4.1
+      },
+      {
+        "name": "Silica",
+        "percent": 21.6
+      }
+    ],
+    "umf": null,
+    "notes": "This glaze adjusts G1214M 5x20 to reduce its thermal expansion (incorporating MgO). It goes in the same direction as G1215U but does not add as much MgO and sources it from Talc instead of Ferro Frit 3249. The MgO is added at the expense of CaO, KNaO. Boron has also been increased a little. The thermal expansion has gone from 7.0 to 6.5. The two frits here are tuned to supply enough Al2O3 to keep the kaolin low enough to prevent shrinkage cracks on drying. This glaze survives and 300F oven:ice-w"
+  },
+  {
+    "code": "G1216M",
+    "name": "Cone 6 Ultraclear Glaze for Porcelains",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Minspar 200",
+        "percent": 8.6
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 23.2
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 15.2
+      },
+      {
+        "name": "EPK",
+        "percent": 24.8
+      },
+      {
+        "name": "Talc",
+        "percent": 4.3
+      },
+      {
+        "name": "Silica",
+        "percent": 23.8
+      }
+    ],
+    "umf": null,
+    "notes": "During 2013 we saw problems with the G1215U low expansion glossy that we had been recommending for some years. It was not melting to a completely ultra-transparent (in some cases it fired silky matte). In addition, it was not co-habiting well with cobalt (either in-glaze or under-glaze), pinholes were appearing. We are examined possible causes for this and suspected a change in the frit 3249. Formulating an alternative became necessary after efforts to identify the exact cause of the change. It "
+  },
+  {
+    "code": "G2000",
+    "name": "LA Matte Cone 6 Matte White",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Custer Feldspar",
+        "percent": 51.7
+      },
+      {
+        "name": "Silica",
+        "percent": 5.6
+      },
+      {
+        "name": "Calcium Carbonate",
+        "percent": 18.8
+      },
+      {
+        "name": "Zinc Oxide",
+        "percent": 8.6
+      },
+      {
+        "name": "EPK",
+        "percent": 15.4
+      }
+    ],
+    "umf": null,
+    "notes": "Cone 6 glazes do not melt well using traditional fluxes (e.g. feldspar, calcium carbonate), they need help. In the past it was common to employ zinc, but today almost all medium temperature glazes depend on boron (from frits or Gerstley Borate). Zinc presents a number of issues, especially with color development, but in a white matte it is a viable option. We have tested this recipe successfully on some occasions and had issues with it on others (stoney rather than silky matte). We are testing d"
+  },
+  {
+    "code": "G2826R",
+    "name": "Floating Blue Cone 5-6 Original Glaze Recipe",
+    "cone": "5-6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Nepheline Syenite",
+        "percent": 47.9
+      },
+      {
+        "name": "Gerstley Borate",
+        "percent": 27
+      },
+      {
+        "name": "Silica",
+        "percent": 20.3
+      },
+      {
+        "name": "EPK",
+        "percent": 5.5
+      },
+      {
+        "name": "Iron Oxide Red",
+        "percent": 2
+      },
+      {
+        "name": "Cobalt Oxide",
+        "percent": 1
+      },
+      {
+        "name": "Rutile",
+        "percent": 4
+      }
+    ],
+    "umf": null,
+    "notes": "This has been used by thousands of potters over the years, it was originally popularized by James Chappell in the book The Potter's Complete Book of Clay and Glazes. It is the common Gerstley Borate/Nepheline/Silica 50:30:20 highly-melt-fluid transparent with added colorants plus the magic ingredient: Rutile. That makes the colors dance as the glass solidifies during cooling. Colored areas appear to \"float\" in the transparent. Cappell says this effect is \"reminiscent of a deep pool of water\"."
+  },
+  {
+    "code": "G2826X",
+    "name": "Randy's Red Cone 5",
+    "cone": "5",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Silica",
+        "percent": 29.7
+      },
+      {
+        "name": "Kaolin",
+        "percent": 5
+      },
+      {
+        "name": "F-4 Feldspar",
+        "percent": 19.8
+      },
+      {
+        "name": "Talc",
+        "percent": 13.9
+      },
+      {
+        "name": "Gerstley Borate",
+        "percent": 31.7
+      },
+      {
+        "name": "Red Iron Oxide",
+        "percent": 15
+      },
+      {
+        "name": "Bentonite",
+        "percent": 2
+      }
+    ],
+    "umf": null,
+    "notes": "There is much more information about this glaze at http://gerstleyborate.com. The Boraq Gerstley Borate substitute works well in this recipe."
+  },
+  {
+    "code": "g2851H",
+    "name": "Ravenscrag Cone 6 High Calcium Matte Blue",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 55
+      },
+      {
+        "name": "Whiting",
+        "percent": 10
+      },
+      {
+        "name": "Dolomite",
+        "percent": 15
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 10
+      },
+      {
+        "name": "Silica",
+        "percent": 10
+      },
+      {
+        "name": "Cobalt Carbonate",
+        "percent": 2
+      },
+      {
+        "name": "Rutile Ceramic",
+        "percent": 5
+      }
+    ],
+    "umf": null,
+    "notes": "This glaze is temperature sensitive. It requires a slow cool down to allow crystals to grow. If the kiln cools too quickly you will get a glossy glaze. Has a nice soft smooth surface, with a variegated light blue color. This base will also work well with other coloring oxides/stains. It is temperature sensitive and should be fired to cone 6."
+  },
+  {
+    "code": "G2896",
+    "name": "Ravenscrag Plum Red Cone 6",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Silica",
+        "percent": 14.5
+      },
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 41.1
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 16.6
+      },
+      {
+        "name": "Talc",
+        "percent": 15.9
+      },
+      {
+        "name": "Ulexite",
+        "percent": 12
+      },
+      {
+        "name": "Red Iron Oxide",
+        "percent": 17.65
+      }
+    ],
+    "umf": null,
+    "notes": "Iron red glazes are common, but tricky, in the cone 6 range. The red color is a product of iron silicate crystals forming during the cooling cycle in the kiln; it can be difficult to develop a process that gives repeatable results. Only a few people have discovered the proper combination of recipe, iron oxide percentage and firing curve (especially cooling). Warning: Iron Red recipes will confront you will troublesome or expensive materials (e.g. bone ash, tricalcium phosphate, lithium carbonate"
+  },
+  {
+    "code": "G2902B",
+    "name": "Cone 6 Crystal Glaze",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Zinc Oxide",
+        "percent": 24.3
+      },
+      {
+        "name": "Dolomite",
+        "percent": 4.9
+      },
+      {
+        "name": "Ferro Frit 3110",
+        "percent": 49.5
+      },
+      {
+        "name": "Silica",
+        "percent": 18.4
+      },
+      {
+        "name": "Lithium Carbonate",
+        "percent": 2.9
+      }
+    ],
+    "umf": null,
+    "notes": "We developed this after a survey of common crystal glazes, it is a middle-of-the-road base recipe (having no colorants). We used this in testing a high expansion body being developing, one that would prevent or minimize crazing that is so common in crystalline glazed ware. Since we were only testing for crazing, the appearance or crystal development were not assessed. That being said, this did develop white crystals in the transparent glass using the PLC6CR schedule. We have tested this using bo"
+  },
+  {
+    "code": "G2902D",
+    "name": "Cone 6 Crystalline Development Project",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ferro Frit 3110",
+        "percent": 50
+      },
+      {
+        "name": "Zinc Oxide",
+        "percent": 22
+      },
+      {
+        "name": "Silica",
+        "percent": 25
+      },
+      {
+        "name": "Lithium Carbonate",
+        "percent": 3
+      },
+      {
+        "name": "Titanium",
+        "percent": 2
+      }
+    ],
+    "umf": null,
+    "notes": "This was fired first on a body having 38 silica, 28.5 ball clay, 28.5 nepheline and 5 bentonite (L3659B). There is no crazing at all but also no crystallization. The firing was 750F/hr to cone 6, 750F to 1800F and soak for 4 hours."
+  },
+  {
+    "code": "G2916F",
+    "name": "Cone 6 Stoneware/Whiteware transparent glaze",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Fusion Frit F-524",
+        "percent": 18.2
+      },
+      {
+        "name": "Talc",
+        "percent": 3
+      },
+      {
+        "name": "Silica",
+        "percent": 29
+      },
+      {
+        "name": "Old Hickory #5 Ball Clay",
+        "percent": 7.9
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 15.7
+      },
+      {
+        "name": "Nepheline Syenite",
+        "percent": 26.3
+      },
+      {
+        "name": "Bentonite",
+        "percent": 1.94
+      }
+    ],
+    "umf": null,
+    "notes": "This was an industrial tableware glaze recommended by tech support at Fusion Frits. It fires hard and crystal clear and has outstanding suspension and application properties. However, the frit is not carried by most suppliers. Thus, most people end up using the G2926B recipe instead. However, if you need to most transparent possible, then it is worth the effort to try to get this frit. The magic for the way this glaze fires and its hardness and durability lie in the variety of fluxes it contains"
+  },
+  {
+    "code": "G2926B",
+    "name": "Cone 6 Whiteware/Porcelain transparent glaze",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Nepheline Syenite",
+        "percent": 16.6
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 23.1
+      },
+      {
+        "name": "EPK",
+        "percent": 17.8
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 6.3
+      },
+      {
+        "name": "Silica 325 mesh",
+        "percent": 34.2
+      },
+      {
+        "name": "Talc",
+        "percent": 2.1
+      }
+    ],
+    "umf": null,
+    "notes": "A cone 6 transparent general-purpose base recipe developed by Tony Hansen (see link to go there below, it contains technical and mixing information about the recipe). This page contains technical and mixing information about the recipe, their page, under code MG6CG, contains mixing and usage information. Page shares at Insight-live.com have information on the development of this from the original recipe (as well as adjustmentsto lower thermal expansion e.g. G2926S). This is an adjustment to Perk"
+  },
+  {
+    "code": "G2926J",
+    "name": "G2926B Reduced COE (Li2O)",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Spodumene",
+        "percent": 11
+      },
+      {
+        "name": "Fusion Frit F-524",
+        "percent": 15
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 15
+      },
+      {
+        "name": "EPK",
+        "percent": 18
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 6
+      },
+      {
+        "name": "Silica 325 mesh",
+        "percent": 32
+      },
+      {
+        "name": "Silverline 303 Talc",
+        "percent": 3
+      }
+    ],
+    "umf": null,
+    "notes": "Remember, the first thing to try to reduce the thermal expansion of G2926B is using 325 mesh silica (or ball milling the slurry). That will help more silica in the recipe to actually go into the melt, that means that the physical thermal expansion will be as low as the calculated one suggests it should be. Second, try G2926S. If that is not enough, then try this recipe. This is the best of a series of tests to lower the thermal expansion of G2926B. Separate trials of substituting ZnO, SrO, Li2O "
+  },
+  {
+    "code": "G2928C",
+    "name": "Ravenscrag Silky Matte for Cone 6",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 10.4
+      },
+      {
+        "name": "Talc",
+        "percent": 7.6
+      },
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 56.9
+      },
+      {
+        "name": "Nepheline Syenite",
+        "percent": 12.3
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 1.4
+      },
+      {
+        "name": "Calcined Kaolin",
+        "percent": 11.4
+      },
+      {
+        "name": "Tin Oxide",
+        "percent": 4.74
+      }
+    ],
+    "umf": null,
+    "notes": "This works well on Plainsman M340, but especially on a whiteware like M370. Produces an ivory white with some fleck. The surface is very silky, reminiscent of a cone 10 dolomite matte. Its matteness is adjustable by varying the amount of calcined kaolin (or simply blending in a glossy recipe to shine it up a little). The mechanism of the matteness is high MgO in a boron base of low Si:Al ratio. Do not use regular kaolin, the glaze will shrink too much during drying. Use enough water in the slurr"
+  },
+  {
+    "code": "G2934",
+    "name": "Matte Glaze Base for Cone 6",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Ferro Frit 3124",
+        "percent": 17.4
+      },
+      {
+        "name": "Dolomite",
+        "percent": 23.5
+      },
+      {
+        "name": "Silica",
+        "percent": 26.9
+      },
+      {
+        "name": "EP Kaolin",
+        "percent": 18.3
+      },
+      {
+        "name": "Calcined Kaolin",
+        "percent": 13.9
+      }
+    ],
+    "umf": null,
+    "notes": "A cone 6 boron-fluxed MgO matte developed at Plainsman Clays by Tony Hansen (a link below will take you to its page there). This page contains technical and mixing information about the recipe, their page, under code MG6CDM, contains mixing and usage information. This recipe has the best suspension and application properties when it is thixotropic (that involves mixing it thinner than normal and gelling it using Epsom salts). Target a specific gravity of 1.43-1.44 (about 90 water to 100 powder, "
+  },
+  {
+    "code": "G2934Y",
+    "name": "G2934 (lower-LOI)",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ferro Frit 3249",
+        "percent": 10
+      },
+      {
+        "name": "EPK",
+        "percent": 20.5
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 21.5
+      },
+      {
+        "name": "Talc",
+        "percent": 14
+      },
+      {
+        "name": "Nepheline Syenite",
+        "percent": 10.5
+      },
+      {
+        "name": "Silica",
+        "percent": 13
+      },
+      {
+        "name": "Calcined Kaolin",
+        "percent": 10.5
+      }
+    ],
+    "umf": null,
+    "notes": "This recipe was made as an alternative to blending G2934 matte and G2926B glossy to tune the degree of matteness (this being equal to about an 85:15 mix of those). Those two recipes do not require Frit 3249, they use the much more common 3134, 3124 and 3195. If you are getting started that approach would likely be better for you. This is an \"MgO matte\". High MgO content is a common matting mechanism at cone 10 but also works at cone 6. This recipe has the same chemistry as G2934, however, it sou"
+  },
+  {
+    "code": "G3806C",
+    "name": "Panama Cone 6 Adjustment 2015",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Silica",
+        "percent": 26.3
+      },
+      {
+        "name": "Kaolin",
+        "percent": 19.7
+      },
+      {
+        "name": "Dolomite",
+        "percent": 8.7
+      },
+      {
+        "name": "Strontium Carbonate",
+        "percent": 4.4
+      },
+      {
+        "name": "Ferro Frit 3110",
+        "percent": 31.1
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 6.6
+      },
+      {
+        "name": "Zinc Oxide",
+        "percent": 3.3
+      },
+      {
+        "name": "Copper Oxide",
+        "percent": 2
+      },
+      {
+        "name": "Tin Oxide",
+        "percent": 2.5
+      }
+    ],
+    "umf": null,
+    "notes": "This is work I did in 2015 (in 2019 a much bigger project developed this further). The copper and tin produce the turquoise celadon effect. This recipe is for a brilliant fluid-melt transparent base glaze, initially for copper blues and greens, but later for stains. \"Fluid-melt\" means it runs down off ware if applied too thickly, this is a key for achieving many visual effects. Initiailly I compared a number of recipes I found on line and finally selected Panama Blue. I removed the colorants and"
+  },
+  {
+    "code": "G3838A",
+    "name": "Low Expansion Transparent for P300 Porcelain",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 37
+      },
+      {
+        "name": "EPK",
+        "percent": 20
+      },
+      {
+        "name": "Silica",
+        "percent": 38
+      },
+      {
+        "name": "Ferro Frit 3249",
+        "percent": 5
+      }
+    ],
+    "umf": null,
+    "notes": "We have been recommending G2926J, an adjustment to G2926B to lower its thermal expansion. However J does not have as smooth of a surface or is as crystal clear. This recipe is perhaps a better alternative. The 50:30:20 Frit3134:Kaolin:Silica recipe (77CO4A) was a popular clear base that Plainsman Clays recommended in the early days. It has not been used in recent years because of the high frit content (expense and perceived issues with durability). However we have come to appreciate in recent ye"
+  },
+  {
+    "code": "GA6-A",
+    "name": "Oringal Alberta Slip Amber/Honey base",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Alberta Slip 1000F Roasted",
+        "percent": 40
+      },
+      {
+        "name": "Alberta Slip",
+        "percent": 40
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      }
+    ],
+    "umf": null,
+    "notes": "Don't use this glaze anymore as a transparent honey, use GA6-B instead (it produces a better glass and is more durable by virtue of higher Al2O3 and SiO2 content). The was a long-time cone 6 base recipe for Alberta Slip. For this and the GA6-B we recommend a 2% iron oxide addition to get a richer color. Fusion Frit F-12 has proven a good substitute for 3134. This version is still needed for a couple of reasons: 1. This one produces rutile blues in the cool-and-soak C6DHSC firing schedule (likely"
+  },
+  {
+    "code": "L3500",
+    "name": "Alberta Slip Original cone 6 base glaze",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Alberta Slip 1000F Roasted",
+        "percent": 40
+      },
+      {
+        "name": "Alberta Slip",
+        "percent": 40
+      },
+      {
+        "name": "Ferro Frit 3195",
+        "percent": 20
+      },
+      {
+        "name": "Red Iron Oxide",
+        "percent": 2
+      }
+    ],
+    "umf": null,
+    "notes": "Alta known as GA6-B at PlainsmanClays.com. The successor recipe to GA6-A (this uses Ferro Frit 3195 or the equivalent Fusion F-2 instead of 3134). It fires to a more brilliant glossy and durable surface and has become the standard go-to honey/amber base recipe for Alberta Slip at cone 5 or cone 6. We recommend the C6DHSC or C5DHSC firing schedules. We recommend the addition of 2% iron oxide to get a richer color. The iron has an added benefit: It gels the glaze (the 2% is low enough that it does"
+  },
+  {
+    "code": "GA6-C",
+    "name": "Alberta Slip Floating Blue Cone 6",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Alberta Slip 1000F Roasted",
+        "percent": 40
+      },
+      {
+        "name": "Alberta Slip",
+        "percent": 40
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Rutile",
+        "percent": 4
+      }
+    ],
+    "umf": null,
+    "notes": "This glaze creates a rich blue yet contains none of the world's most expensive common ceramic material, cobalt oxide. On dark bodies the depth of color is incredible. It has a great glossy surface, and, because it contains no raw metal oxides or stains, toxicity issues are less of a concern. On lighter bodies it variegates from medium steel blue, where it is very thick, to amber clear (or a brown if the body is dark) where thin. The blue color does not develop well on porcelains or white-burning"
+  },
+  {
+    "code": "GA6-D",
+    "name": "Alberta Slip Glossy Brown Cone 6",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Alberta Slip 1000F Roasted",
+        "percent": 40
+      },
+      {
+        "name": "Alberta Slip",
+        "percent": 40
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Tin Oxide",
+        "percent": 4
+      },
+      {
+        "name": "Rutile",
+        "percent": 4
+      }
+    ],
+    "umf": null,
+    "notes": "Works well on all types of bodies, very reliable. For mixing instructions please see the master recipe, GA6-A."
+  },
+  {
+    "code": "GA6-F",
+    "name": "Alberta Slip Cone 6 Oatmeal",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Alberta Slip 1000F Roasted",
+        "percent": 40
+      },
+      {
+        "name": "Alberta Slip",
+        "percent": 40
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Rutile",
+        "percent": 5
+      },
+      {
+        "name": "Titanium Dioxide",
+        "percent": 3
+      }
+    ],
+    "umf": null,
+    "notes": "Alberta slip is well suited to oatmeal glazes because it already has the iron content needed. Vary the titanium for more or less variegation and oatmeal appearance. One issue you might encounter is pinholing or blistering if it is too thick (a common problem with this type of glaze). Try using it on different bodies and thicknesses to find the best combination. Adjust the frit if you would like it to melt lower or higher. Do not hesitate to reduce the rutile and titanium to experiment. An advant"
+  },
+  {
+    "code": "GA6-G",
+    "name": "Alberta Slip Lithium Brown Cone 6",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Alberta Slip",
+        "percent": 37.7
+      },
+      {
+        "name": "Alberta Slip 1000F Roasted",
+        "percent": 33
+      },
+      {
+        "name": "Ferro Frit 3195",
+        "percent": 19.8
+      },
+      {
+        "name": "Lithium Carbonate",
+        "percent": 4.7
+      },
+      {
+        "name": "Alumina Calcined",
+        "percent": 4.7
+      },
+      {
+        "name": "Tin Oxide",
+        "percent": 3.77
+      }
+    ],
+    "umf": null,
+    "notes": "One of the most popular Albany Slip glazes was 11% lithium, 4% tin oxide and 85% Albany Slip. This recipe reduces the lithium by more 50% eliminating the shivering problems that were common. This also employs a frit to help melt the glaze (in the absence of the 6% lithium carbonate). The added alumina darkens the color and slightly dulls the gloss (leave it out if you want). Visually, this glaze works very well on porcelain showing variegated effects even on smooth surfaces, especially with vari"
+  },
+  {
+    "code": "GA6-G1",
+    "name": "Alberta Slip Lithium Brown Cone 6 Low Expansion",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Alberta Slip",
+        "percent": 41.7
+      },
+      {
+        "name": "Alberta Slip 1000F Roasted",
+        "percent": 36.5
+      },
+      {
+        "name": "Ferro Frit 3249",
+        "percent": 17.7
+      },
+      {
+        "name": "Silica",
+        "percent": 4.2
+      },
+      {
+        "name": "Lithium Carbonate",
+        "percent": 5.21
+      },
+      {
+        "name": "Tin Oxide",
+        "percent": 4.17
+      }
+    ],
+    "umf": null,
+    "notes": "The regular Alberta Slip lithium brown recipe crazes on porcelain. This one was formulated to maintain the appearance but reduce the thermal expansion. It does this by reducing the KNaO and increasing the MgO. This was effected by employing MgO sourcing frit 3249. This frit is more expensive and difficult to get but it is the only way we have found to effectively reduce the thermal expansion and maintain the aesthetic. Like the original Albany glaze, this recipe contains lithium carbonate (which"
+  },
+  {
+    "code": "GA6-H",
+    "name": "Alberta Slip Cone 6 Black",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Alberta Slip 1000F Roasted",
+        "percent": 35.5
+      },
+      {
+        "name": "Alberta Slip",
+        "percent": 43
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 21.5
+      },
+      {
+        "name": "Zircopax",
+        "percent": 4.3
+      },
+      {
+        "name": "Mason 6666 Black Stain",
+        "percent": 3.23
+      }
+    ],
+    "umf": null,
+    "notes": "A glossy black. The small amount of frit needed is due to the fact that Alberta slip is a dark burning material already. If it is not black enough, increase the percentage of stain. If you need a glossier surface, increase the frit. If it crazes switch to Ferro Frit 3195. Should be ball milled. For mixing instructions please see the master recipe, GA6-A."
+  },
+  {
+    "code": "GR6-A",
+    "name": "Ravenscrag Cone 6 Clear Glossy Base",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 50
+      },
+      {
+        "name": "Ravenscrag Slip 1000F Roast",
+        "percent": 30
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      }
+    ],
+    "umf": null,
+    "notes": "Also known as G2936C. This is the base cone 6 Ravenscrag recipe, it fires as a transparent glossy. It has an addition of the most common North American borate frit, enough to produce a good glass at cone 6. Most other glazes based on Ravenscrag use this as a starting point (although they might substitute the frit for another). The character of this is not the same as transparent glazes made from materials like feldspar, kaolin, silica, wollastonite and frit. This is a natural clay material havin"
+  },
+  {
+    "code": "GR6-B",
+    "name": "Ravenscrag Cone 6 Variegated Light Glossy Blue",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 80
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Cobalt Oxide",
+        "percent": 3
+      },
+      {
+        "name": "Rutile",
+        "percent": 3
+      },
+      {
+        "name": "Titanium Dioxide",
+        "percent": 3
+      }
+    ],
+    "umf": null,
+    "notes": "This produces a variegated light medium blue glaze that breaks greenish over edges. This glaze is very consistent and has very good working properties. Variations 5% titanium dioxide, 1% cobalt oxide, 1% copper oxide and 0.5% iron oxide: A light glossy blue glaze with some lighter variegations, breaks to a green over the edges. 3% Cobalt Carbonate, 3% Rutile, 3% Titanium dioxide: A variegated light medium blue glaze that breaks greenish over edges. 2% copper oxide and 2.5% titanium dioxide: Does"
+  },
+  {
+    "code": "GR6-C",
+    "name": "Ravenscrag Cone 6 White Glossy",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 40
+      },
+      {
+        "name": "Ravenscrag Slip 1000F Roast",
+        "percent": 40
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Zircopax",
+        "percent": 10
+      }
+    ],
+    "umf": null,
+    "notes": "A white base glaze with all the advantages of Ravenscrag Slip base GR6-A. It is not drab-looking like a porcelain toilet, but is vibrant and interesting on stoneware bodies. It breaks to clear on the edges of contours and has variegation. It works well with added stains, the variegation of this base (adding a little titanium dioxide) makes the color much more interesting. Adjust the amount of zircopax as needed to adjust the degree of whiteness. Recently we have begun using a mix of tin and zirc"
+  },
+  {
+    "code": "GR6-D",
+    "name": "Ravenscrag Cone 6 Glossy Black",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 40
+      },
+      {
+        "name": "Ravenscrag Slip Roast",
+        "percent": 40
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Iron Oxide Red",
+        "percent": 13
+      },
+      {
+        "name": "Cobalt Oxide",
+        "percent": 0.5
+      },
+      {
+        "name": "Chrome Oxide",
+        "percent": 0.5
+      }
+    ],
+    "umf": null,
+    "notes": "Consider trying 6-8% Mason 6666 to stain this base instead of these three raw colorants. You can also make a very good black from our G2926B plus the same stain. For mixing instructions please see the master recipe, GR6-A."
+  },
+  {
+    "code": "GR6-E",
+    "name": "Ravenscrag Cone 6 Raspberry Glossy",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 40
+      },
+      {
+        "name": "Ravenscrag Slip 1000F Roast",
+        "percent": 30
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Whiting",
+        "percent": 10
+      },
+      {
+        "name": "Tin Oxide",
+        "percent": 7.5
+      },
+      {
+        "name": "Chrome Oxide",
+        "percent": 0.5
+      }
+    ],
+    "umf": null,
+    "notes": "Chrome-tin (either from the raw materials or a stain) pink and red glazes can be difficult to achieve and keep consistent at cone 6. Red is perhaps the most difficult and expensive color in ceramics. The chemistry of the host glaze has to be sympathetic to the color development, the chrome and tin require high calcium, zero zinc and low boron (that is why this recipe has 10% added calcium carbonate). Remember that red is red, it is difficult to acheive in glazes; test this first on different kin"
+  },
+  {
+    "code": "GR6-H",
+    "name": "Ravenscrag Cone 6 Oatmeal Matte",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 60
+      },
+      {
+        "name": "Calcined Alumina",
+        "percent": 10
+      },
+      {
+        "name": "Dolomite",
+        "percent": 10
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Manganese Dioxide",
+        "percent": 4
+      },
+      {
+        "name": "Rutile",
+        "percent": 5
+      },
+      {
+        "name": "Illmenite Granular",
+        "percent": 0.3
+      }
+    ],
+    "umf": null,
+    "notes": "Note: For use as a straight glaze We are recommending GA6-F Alberta Slip oatmeal glaze instead, it looks better and has a better melt. Alberta Slip is already a stained material, so less colorants are needed to make darker colored glazes. Go the http://albertaslip.com. However, as a second layer over other more fluid melt glazes, this can work well. Be sure not to put it on too thick. We have had a report of this leaching. This is credible because of the 10% calcined alumina in this recipe, only"
+  },
+  {
+    "code": "GR6-L",
+    "name": "Ravenscrag Cone 6 Transparent Burgundy",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 40
+      },
+      {
+        "name": "Ravenscrag Slip 1000F Roast",
+        "percent": 40
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Mason 6006 Stain",
+        "percent": 10
+      }
+    ],
+    "umf": null,
+    "notes": "This is an excellent alternative to the GR6-E Raspberry recipe. It is simpler, just a stain addition to the standard transparent. It is more reliable. It is easy to adjust the amount of stain to get the exact shade you want. This base recipe is unusual in that it supports the development of chrome tin stains, these are available in many shades from pink to red, consider trying a different another if this color is not right for you. Because this is transparent (contains no opacifier), different t"
+  },
+  {
+    "code": "GR6-M",
+    "name": "Ravenscrag Cone 6 Floating Blue",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 36.7
+      },
+      {
+        "name": "Ravenscrag Slip 1000F Roast",
+        "percent": 35.8
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 18.3
+      },
+      {
+        "name": "Ferro Frit 3124",
+        "percent": 9.2
+      },
+      {
+        "name": "Red Iron Oxide",
+        "percent": 1.83
+      },
+      {
+        "name": "Cobalt Oxide",
+        "percent": 0.92
+      },
+      {
+        "name": "Rutile",
+        "percent": 3.67
+      }
+    ],
+    "umf": null,
+    "notes": "This recipe is also code numbered G2917. David Shaner's cone 6 floating blue has been used for many years by thousands of potters. However, the base (the clear to which the colorants are added) is 50:30:20 Nepheline Syenite:Gerstley Borate:Silica. It has serious issues (including slurry gelling because of the partially soluble Gerstley Borate and Nepheline Syenite, consistency and supply issues with Gerstley Borate, susceptibility to blistering and higher thermal expansion because of the high fe"
+  },
+  {
+    "code": "GR6-N",
+    "name": "Ravenscrag Alberta Brilliant Cone 6 Celadon",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ravenscrag Slip",
+        "percent": 38
+      },
+      {
+        "name": "Alberta Slip 1000F Roasted",
+        "percent": 38
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 19
+      },
+      {
+        "name": "Ferro Frit 3124",
+        "percent": 5
+      },
+      {
+        "name": "Iron Oxide Red",
+        "percent": 1
+      },
+      {
+        "name": "Cobalt Oxide",
+        "percent": 0.5
+      },
+      {
+        "name": "Rutile",
+        "percent": 2.5
+      },
+      {
+        "name": "Tin Oxide",
+        "percent": 0.5
+      },
+      {
+        "name": "Copper Oxide Black",
+        "percent": 0.5
+      }
+    ],
+    "umf": null,
+    "notes": "This was originally discovered as a 50:50 mix of G2917 Ravenscrag Floating Blue and G2908 Alberta Slip Floating Blue. The result is green. The recipe is a combination of the two with slight changes (0.5 cobalt instead of 0.75, 1.0 iron instead of 1.5, 2.5 rutile instead of 3.0). For mixing instructions please see the master recipe, GR6-A."
+  },
+  {
+    "code": "MGBase1",
+    "name": "High Calcium Semimatte 1 (Mastering Glazes)",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Ferro Frit 3195",
+        "percent": 20
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 29
+      },
+      {
+        "name": "Nepheline Syenite",
+        "percent": 4
+      },
+      {
+        "name": "EPK",
+        "percent": 30
+      },
+      {
+        "name": "Silica",
+        "percent": 17
+      }
+    ],
+    "umf": null,
+    "notes": "While \"Waterfall Brown\" is about movement and \"Waxwing Brown\" is about a waxy feel, HCSM 1 is all about the classic, soft, \"eggshell\" finish. Key Properties • Visual Appearance: A smooth, buttery, semi-matte surface. • The Science: The matteness comes from Calcium-Silicate crystals that grow as the glaze cools. A controlled cooling cycle (\"down-firing\") is needed to give the crystals time to form. • Surface: It is often described as having an \"oily\" or \"buttery\" feel rather than a chalky one. • "
+  },
+  {
+    "code": "MGBase2",
+    "name": "High Calcium Semimatte 2 (Mastering Glazes)",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Ferro Frit 3195",
+        "percent": 23
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 28
+      },
+      {
+        "name": "Nepheline Syenite",
+        "percent": 4
+      },
+      {
+        "name": "EPK",
+        "percent": 28
+      },
+      {
+        "name": "Silica",
+        "percent": 17
+      }
+    ],
+    "umf": null,
+    "notes": "In Mastering Cone 6 Glazes, High Calcium Semimatte 2 (HCSM 2) is the closely related sibling to HCSM 1. It was formulated to offer a slightly \"stiffer\" melt. Key Properties • Visual Appearance: A soft, opaque, eggshell-white base. Compared to HCSM 1, it tends to be a bit more opaque. • The Science: Like its predecessor, it relies on high calcium levels to create a micro-crystalline surface. • Surface: It is a true semimatte. It isn't quite as \"shiny\" as a semi-gloss, but it isn't \"stony\" or dry "
+  },
+  {
+    "code": "MGBase3",
+    "name": "General Purpose Glossy Base 1 (Mastering Glazes)",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "G-200 Felspar",
+        "percent": 20
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 10
+      },
+      {
+        "name": "EPK",
+        "percent": 20
+      },
+      {
+        "name": "Talc",
+        "percent": 11.5
+      },
+      {
+        "name": "Silica",
+        "percent": 18.5
+      }
+    ],
+    "umf": null,
+    "notes": "In Mastering Cone 6 Glazes, the Glossy Clear Liner is meant to stay clear. This base is adapted to being a foundation for color experiments using oxides and stains. Key Properties • Visual Appearance: In its base form, it is a clean, transparent-to-translucent gloss. It is slightly more \"active\" than the Liner glaze, having a bit more depth and fluid character. • The Science: It is a Calcium-Alumina-Silicate glaze. It accepts colorants more vibrantly, especially Chrome, Cobalt, Copper, and Iron."
+  },
+  {
+    "code": "MGBase4",
+    "name": "Glossy Base 2 Cone 6 (Mastering Glazes)",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 26
+      },
+      {
+        "name": "Custer Feldspar",
+        "percent": 22
+      },
+      {
+        "name": "Talc",
+        "percent": 5
+      },
+      {
+        "name": "Whiting",
+        "percent": 4
+      },
+      {
+        "name": "EPK",
+        "percent": 17
+      },
+      {
+        "name": "Silica",
+        "percent": 26
+      }
+    ],
+    "umf": null,
+    "notes": "The Glossy Clear Liner from Mastering Cone 6 Glazes is arguably the most important recipe in the book. It is the most stable and food-safe for durable interior surfaces. Key Properties • Transparent and colorless, a balanced Borosilicate glass. • Surface: A hard, glass-like finish that is easy to clean and resistant to the \"etching\" effects of dishwashers and acidic foods. • Thermal Fit: It is formulated with a \"middle-of-the-road\" thermal expansion, meaning it fits a wide variety of commercial "
+  },
+  {
+    "code": "MGBase5",
+    "name": "Glossy Clear Liner Cone 6 (Mastering Glazes)",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "G-200 Felspar",
+        "percent": 20
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 20
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 15
+      },
+      {
+        "name": "EPK",
+        "percent": 20
+      },
+      {
+        "name": "Talc",
+        "percent": 6
+      },
+      {
+        "name": "Silica",
+        "percent": 19
+      }
+    ],
+    "umf": null,
+    "notes": "Optimized for its role as an interior \"shield.\" Key Properties • Visual Appearance: Crystal clear. • The Science: This is a high-calcium, boron-balanced glass that is resistant to corrosion. • Surface: It creates a \"glass-like\" interior that is highly resistant to staining from coffee, tea, or metal spoon marks. • Thermal Fit: It has a low-to-medium thermal expansion giving \"fit\" on most bodies. Likes (Pros) • Unmatched Stability: It does not run, it does not crawl, and it rarely pinholes. It is"
+  },
+  {
+    "code": "MGBase6",
+    "name": "Zinc Semimatte Glossy Base Cone 6",
+    "cone": "6",
+    "surface": "matte",
+    "materials": [
+      {
+        "name": "Nepheline Syenite",
+        "percent": 36
+      },
+      {
+        "name": "Wollastonite",
+        "percent": 13
+      },
+      {
+        "name": "Zinc Oxide",
+        "percent": 10
+      },
+      {
+        "name": "EPK",
+        "percent": 10
+      },
+      {
+        "name": "Silica",
+        "percent": 31
+      },
+      {
+        "name": "Cobalt Oxide",
+        "percent": 1
+      },
+      {
+        "name": "Rutile",
+        "percent": 6
+      }
+    ],
+    "umf": null,
+    "notes": "While the authors of Mastering Glazes often prefer calcium-based mattes for stability, they included this zinc-based version for potters who want the buttery \"low-luster\" surface that zinc provides. Key Properties • Visual Appearance: A soft, muted teal or sage green. A semi-opaque with a soft, eggshell-like glow. • Surface: It has a \"stony\" semi-matte texture. Because of the Zinc Oxide, it develops a micro-crystalline surface that feels smooth to the touch but lacks a reflective glare. • Mechan"
+  },
+  {
+    "code": "MGBase7",
+    "name": "Raspberry Cone 6 (Mastering Glazes)",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Whiting",
+        "percent": 20
+      },
+      {
+        "name": "Nepheline Syenite",
+        "percent": 18
+      },
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 14
+      },
+      {
+        "name": "OM-4 Ball Clay",
+        "percent": 18
+      },
+      {
+        "name": "Silica",
+        "percent": 30
+      },
+      {
+        "name": "Tin Oxide",
+        "percent": 7.5
+      },
+      {
+        "name": "Chrome oxide",
+        "percent": 0.2
+      }
+    ],
+    "umf": null,
+    "notes": "While most of the Mastering Glazes book focuses on earthy, variegated tones, Raspberry provides a vibrant, clean color. Key Properties • Visual Appearance: A bright pink to burgundy color. It is a glossy and translucent-to-semi-opaque. • The Science: This glaze relies on the Chrome-Tin Pink effect (high calcium, no zinc, and low boron). • Surface: Smooth and glass-like. It \"breaks\" clear or white over sharp edges and highlights surface texture by pooling in crevices in a deeper, more concentrate"
+  },
+  {
+    "code": "MGBase8",
+    "name": "Waxwing Brown Cone 6 (Mastering Glazes)",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 34.5
+      },
+      {
+        "name": "Talc",
+        "percent": 9.5
+      },
+      {
+        "name": "OM-4 Ball Clay",
+        "percent": 25
+      },
+      {
+        "name": "Silica",
+        "percent": 31
+      },
+      {
+        "name": "Iron Oxide",
+        "percent": 15
+      },
+      {
+        "name": "Titanium Dioxide",
+        "percent": 0.15
+      }
+    ],
+    "umf": null,
+    "notes": "A glaze from the book \"Mastering Cone 6 Glazes\" by John Hesselberth and Ron Roy. While \"Waterfall Brown\" is the flashy, fluid star of the book, \"Waxwing Brown\" is often considered its more stable cousin. It is named after the Cedar Waxwing bird, mimicking the smooth, silky transition of browns and tans found in the bird’s plumage. Key Properties • Visual Appearance: Unlike the dramatic streaks of Waterfall Brown, Waxwing Brown is a satin-matte to semi-gloss. It is characterized by a smooth, butt"
+  },
+  {
+    "code": "MGBase9",
+    "name": "Waterfall Brown Cone 6 (Mastering Glazes)",
+    "cone": "6",
+    "surface": "glossy",
+    "materials": [
+      {
+        "name": "Ferro Frit 3134",
+        "percent": 33.5
+      },
+      {
+        "name": "Ferro Frit 3195",
+        "percent": 26
+      },
+      {
+        "name": "OM-4 Ball Clay",
+        "percent": 17
+      },
+      {
+        "name": "Silica",
+        "percent": 23.5
+      },
+      {
+        "name": "Red Iron Oxide",
+        "percent": 12.5
+      },
+      {
+        "name": "Rutile",
+        "percent": 1
+      }
+    ],
+    "umf": null,
+    "notes": "\"Waterfall Brown\" is a celebrated specialty glaze from the seminal book \"Mastering Cone 6 Glazes\" by John Hesselberth and Ron Roy. Known for its dynamic, fluid movement and rich variegated appearance, it has been a staple in mid-range (Cone 6) electric kiln pottery for decades. Key Properties Visual Appearance: A rich, variegated brown that \"breaks\" (changes color) over edges and texture. It typically features dark brown tones with streaks or \"waterfalls\" of lighter cream, tan, or even bluish-gr"
+  }
+]

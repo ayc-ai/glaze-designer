@@ -1,0 +1,368 @@
+{
+  "_meta": {
+    "description": "Ceramic materials database for cone 6 oxidation glaze calculation",
+    "oxide_units": "weight percent (wt%) of each oxide contributed by the material",
+    "loi_units": "weight percent loss on ignition",
+    "molecular_weight_units": "g/mol (of the ideal chemical formula)",
+    "sources": "Digitalfire, Glazy.org, manufacturer data sheets, Hesselberth & Roy"
+  },
+  "materials": {
+    "Nepheline Syenite": {
+      "formula": "K2O·3Na2O·4Al2O3·8SiO2",
+      "molecular_weight": 1168.8,
+      "loi": 0.7,
+      "oxides": {
+        "SiO2": 60.70,
+        "Al2O3": 23.30,
+        "Na2O": 9.80,
+        "K2O": 4.60,
+        "CaO": 0.70,
+        "Fe2O3": 0.08,
+        "MgO": 0.10
+      }
+    },
+    "Custer Feldspar": {
+      "formula": "K2O·Al2O3·6SiO2",
+      "molecular_weight": 556.8,
+      "loi": 0.55,
+      "oxides": {
+        "SiO2": 68.50,
+        "Al2O3": 17.35,
+        "K2O": 10.28,
+        "Na2O": 2.91,
+        "CaO": 0.30,
+        "Fe2O3": 0.11,
+        "MgO": 0.00
+      }
+    },
+    "EPK Kaolin": {
+      "formula": "Al2O3·2SiO2·2H2O",
+      "molecular_weight": 258.2,
+      "loi": 12.00,
+      "oxides": {
+        "SiO2": 45.29,
+        "Al2O3": 37.62,
+        "Na2O": 0.06,
+        "K2O": 0.34,
+        "CaO": 0.18,
+        "MgO": 0.10,
+        "Fe2O3": 0.54,
+        "TiO2": 1.50,
+        "P2O5": 0.26
+      }
+    },
+    "Ball Clay": {
+      "formula": "Al2O3·2SiO2·2H2O (approx)",
+      "molecular_weight": 258.2,
+      "loi": 10.00,
+      "oxides": {
+        "SiO2": 52.70,
+        "Al2O3": 30.90,
+        "Na2O": 0.20,
+        "K2O": 0.70,
+        "CaO": 0.30,
+        "MgO": 0.30,
+        "Fe2O3": 1.00,
+        "TiO2": 1.50
+      }
+    },
+    "Silica": {
+      "formula": "SiO2",
+      "molecular_weight": 60.08,
+      "loi": 0.0,
+      "oxides": {
+        "SiO2": 100.00
+      }
+    },
+    "Whiting": {
+      "formula": "CaCO3",
+      "molecular_weight": 100.09,
+      "loi": 43.97,
+      "oxides": {
+        "CaO": 56.03
+      }
+    },
+    "Dolomite": {
+      "formula": "CaMg(CO3)2",
+      "molecular_weight": 184.40,
+      "loi": 47.73,
+      "oxides": {
+        "CaO": 30.41,
+        "MgO": 21.86
+      }
+    },
+    "Talc": {
+      "formula": "3MgO·4SiO2·H2O",
+      "molecular_weight": 379.27,
+      "loi": 4.75,
+      "oxides": {
+        "SiO2": 63.37,
+        "MgO": 31.88
+      }
+    },
+    "Wollastonite": {
+      "formula": "CaSiO3",
+      "molecular_weight": 116.16,
+      "loi": 0.50,
+      "oxides": {
+        "SiO2": 51.72,
+        "CaO": 47.78
+      }
+    },
+    "Gerstley Borate": {
+      "formula": "Variable (natural mineral)",
+      "molecular_weight": 411.0,
+      "loi": 26.00,
+      "oxides": {
+        "SiO2": 14.70,
+        "Al2O3": 1.05,
+        "B2O3": 26.20,
+        "Na2O": 4.10,
+        "CaO": 20.40,
+        "MgO": 4.80,
+        "K2O": 0.60,
+        "Fe2O3": 0.35,
+        "SrO": 1.30
+      }
+    },
+    "Gillespie Borate": {
+      "formula": "Variable (natural mineral)",
+      "molecular_weight": 400.0,
+      "loi": 25.00,
+      "oxides": {
+        "SiO2": 16.00,
+        "Al2O3": 1.50,
+        "B2O3": 24.00,
+        "Na2O": 3.50,
+        "CaO": 22.00,
+        "MgO": 5.00,
+        "K2O": 0.50,
+        "Fe2O3": 0.40
+      }
+    },
+    "Ferro Frit 3134": {
+      "formula": "Frit (no LOI)",
+      "molecular_weight": 327.4,
+      "loi": 0.0,
+      "oxides": {
+        "SiO2": 46.51,
+        "B2O3": 23.26,
+        "Na2O": 10.28,
+        "CaO": 19.95
+      }
+    },
+    "Ferro Frit 3124": {
+      "formula": "Frit (no LOI)",
+      "molecular_weight": 391.0,
+      "loi": 0.0,
+      "oxides": {
+        "SiO2": 55.30,
+        "Al2O3": 9.86,
+        "B2O3": 13.73,
+        "Na2O": 6.28,
+        "K2O": 0.92,
+        "CaO": 14.07
+      }
+    },
+    "Ferro Frit 3110": {
+      "formula": "Frit (no LOI)",
+      "molecular_weight": 412.0,
+      "loi": 0.0,
+      "oxides": {
+        "SiO2": 63.00,
+        "Al2O3": 4.39,
+        "B2O3": 7.56,
+        "Na2O": 15.45,
+        "K2O": 2.20,
+        "CaO": 5.23
+      }
+    },
+    "Zinc Oxide": {
+      "formula": "ZnO",
+      "molecular_weight": 81.38,
+      "loi": 0.0,
+      "oxides": {
+        "ZnO": 100.00
+      }
+    },
+    "Strontium Carbonate": {
+      "formula": "SrCO3",
+      "molecular_weight": 147.63,
+      "loi": 29.82,
+      "oxides": {
+        "SrO": 70.18
+      }
+    },
+    "Barium Carbonate": {
+      "formula": "BaCO3",
+      "molecular_weight": 197.34,
+      "loi": 22.30,
+      "oxides": {
+        "BaO": 77.70
+      }
+    },
+    "Lithium Carbonate": {
+      "formula": "Li2CO3",
+      "molecular_weight": 73.89,
+      "loi": 40.44,
+      "oxides": {
+        "Li2O": 59.56
+      }
+    },
+    "Bone Ash": {
+      "formula": "Ca3(PO4)2",
+      "molecular_weight": 310.18,
+      "loi": 2.00,
+      "oxides": {
+        "CaO": 52.50,
+        "P2O5": 42.00,
+        "MgO": 1.00,
+        "Na2O": 1.50
+      }
+    },
+    "Spodumene": {
+      "formula": "Li2O·Al2O3·4SiO2",
+      "molecular_weight": 372.2,
+      "loi": 2.50,
+      "oxides": {
+        "SiO2": 64.60,
+        "Al2O3": 27.40,
+        "Li2O": 8.00
+      }
+    },
+    "Cornwall Stone": {
+      "formula": "Mixed feldspar/quartz",
+      "molecular_weight": 500.0,
+      "loi": 1.40,
+      "oxides": {
+        "SiO2": 72.60,
+        "Al2O3": 16.00,
+        "Na2O": 3.40,
+        "K2O": 4.26,
+        "CaO": 1.80,
+        "MgO": 0.10,
+        "Fe2O3": 0.20
+      }
+    },
+    "Soda Ash": {
+      "formula": "Na2CO3",
+      "molecular_weight": 105.99,
+      "loi": 41.51,
+      "oxides": {
+        "Na2O": 58.49
+      }
+    },
+    "Red Iron Oxide": {
+      "formula": "Fe2O3",
+      "molecular_weight": 159.69,
+      "loi": 0.0,
+      "oxides": {
+        "Fe2O3": 97.00,
+        "SiO2": 1.50,
+        "Al2O3": 1.00
+      }
+    },
+    "Cobalt Carbonate": {
+      "formula": "CoCO3",
+      "molecular_weight": 118.94,
+      "loi": 37.00,
+      "oxides": {
+        "CoO": 63.00
+      }
+    },
+    "Cobalt Oxide": {
+      "formula": "Co3O4",
+      "molecular_weight": 240.80,
+      "loi": 0.0,
+      "oxides": {
+        "CoO": 93.00
+      }
+    },
+    "Copper Carbonate": {
+      "formula": "CuCO3·Cu(OH)2",
+      "molecular_weight": 221.12,
+      "loi": 28.00,
+      "oxides": {
+        "CuO": 72.00
+      }
+    },
+    "Chrome Oxide": {
+      "formula": "Cr2O3",
+      "molecular_weight": 151.99,
+      "loi": 0.0,
+      "oxides": {
+        "Cr2O3": 100.00
+      }
+    },
+    "Manganese Dioxide": {
+      "formula": "MnO2",
+      "molecular_weight": 86.94,
+      "loi": 8.15,
+      "oxides": {
+        "MnO": 91.85
+      }
+    },
+    "Rutile": {
+      "formula": "TiO2 (impure)",
+      "molecular_weight": 79.87,
+      "loi": 0.0,
+      "oxides": {
+        "TiO2": 96.00,
+        "Fe2O3": 2.50,
+        "SiO2": 1.00
+      }
+    },
+    "Tin Oxide": {
+      "formula": "SnO2",
+      "molecular_weight": 150.71,
+      "loi": 0.0,
+      "oxides": {
+        "SiO2": 0.00
+      },
+      "_note": "SnO2 is not in the standard oxide list; acts as opacifier. Tracked separately."
+    },
+    "Zircopax": {
+      "formula": "ZrSiO4 (+ additives)",
+      "molecular_weight": 183.31,
+      "loi": 0.0,
+      "oxides": {
+        "SiO2": 33.50
+      },
+      "_note": "ZrO2 (~66.5%) is not in the standard oxide list; acts as opacifier."
+    },
+    "Titanium Dioxide": {
+      "formula": "TiO2",
+      "molecular_weight": 79.87,
+      "loi": 0.0,
+      "oxides": {
+        "TiO2": 100.00
+      }
+    },
+    "Bentonite": {
+      "formula": "Complex clay mineral",
+      "molecular_weight": 360.0,
+      "loi": 6.00,
+      "oxides": {
+        "SiO2": 61.40,
+        "Al2O3": 20.30,
+        "Na2O": 2.70,
+        "MgO": 2.60,
+        "CaO": 0.50,
+        "K2O": 0.20,
+        "Fe2O3": 3.90
+      }
+    },
+    "Macaloid": {
+      "formula": "Synthetic hectorite",
+      "molecular_weight": 380.0,
+      "loi": 8.00,
+      "oxides": {
+        "SiO2": 55.00,
+        "MgO": 25.00,
+        "Na2O": 3.00,
+        "Li2O": 1.20,
+        "Fe2O3": 0.10
+      }
+    }
+  }
+}
