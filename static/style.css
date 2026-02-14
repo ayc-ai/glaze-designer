@@ -128,35 +128,43 @@ input[type="number"]:focus {
   border-bottom-color: var(--accent);
 }
 
-/* Custom selects */
+/* Custom selects — Safari-safe */
 .select-wrap {
   position: relative;
+  overflow: hidden;
 }
 .select-wrap::after {
   content: '';
   position: absolute;
-  right: 2px;
-  bottom: 0.85rem;
+  right: 4px;
+  top: 50%;
   width: 6px;
   height: 6px;
   border-right: 1.5px solid var(--subtle);
   border-bottom: 1.5px solid var(--subtle);
-  transform: rotate(45deg);
+  transform: translateY(-65%) rotate(45deg);
   pointer-events: none;
+  z-index: 1;
 }
 select {
-  width: 100%;
+  width: calc(100% + 30px);
   appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
   background: transparent;
+  background-image: none !important;
   border: none;
   border-bottom: 1px solid var(--border);
   border-radius: 0;
-  padding: 0.6rem 1.2rem 0.6rem 0;
+  padding: 0.6rem 40px 0.6rem 0;
   color: var(--text);
   font-family: inherit;
   font-size: 0.95rem;
   cursor: pointer;
+  text-overflow: ellipsis;
+}
+select::-ms-expand {
+  display: none;
 }
 select:focus {
   outline: none;
