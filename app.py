@@ -142,9 +142,86 @@ def get_clay_bodies():
     return jsonify(CLAY_BODY_OPTIONS)
 
 
+def load_all_references():
+    """Load all recipe sources into a unified library."""
+    all_refs = []
+    
+    # 1. Designed/personal glazes
+    for r in REFERENCE_GLAZES:
+        all_refs.append({
+            "name": r["name"],
+            "source": "designed" if r["name"] in ["Honey Shino","Copper Dust","Oribe Seafoam Base"] else "personal",
+            "cone": str(r.get("cone", "6")),
+            "surface": r.get("description", "").split(",")[0] if "," in r.get("description","") else "",
+            "description": r.get("description", ""),
+            "recipe": r["recipe"],
+            "additions": r.get("additions", {}),
+            "notes": r.get("notes", ""),
+        })
+    
+    # 2. Digitalfire recipes
+    df_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "digitalfire_recipes.json")
+    if os.path.exists(df_path):
+        with open(df_path) as f:
+            df_recipes = json.load(f)
+        for r in df_recipes:
+            recipe_dict = {}
+            for m in r.get("materials", []):
+                recipe_dict[m["name"]] = m["percent"]
+            all_refs.append({
+                "name": f"{r.get('code', '')} — {r.get('name', '')}".strip(" —"),
+                "source": "digitalfire",
+                "cone": str(r.get("cone", "6")),
+                "surface": r.get("surface", ""),
+                "description": r.get("notes", "")[:120] if r.get("notes") else "",
+                "recipe": recipe_dict,
+                "additions": {},
+                "notes": r.get("notes", ""),
+            })
+    
+    # 3. Glazy recipes
+    gl_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "glazy_recipes.json")
+    if os.path.exists(gl_path):
+        with open(gl_path) as f:
+            gl_recipes = json.load(f)
+        for r in gl_recipes:
+            recipe_dict = {}
+            additions_dict = {}
+            for m in r.get("materials", []):
+                if m.get("is_additional"):
+                    additions_dict[m["name"]] = m["percent"]
+                else:
+                    recipe_dict[m["name"]] = m["percent"]
+            surface = r.get("surface", "")
+            color = r.get("color", "")
+            label = f"{surface} {color}".strip() if surface or color else ""
+            all_refs.append({
+                "name": r.get("name", "Unnamed"),
+                "source": "glazy",
+                "cone": str(r.get("cone", "6")),
+                "surface": surface.lower() if surface else "",
+                "description": label,
+                "recipe": recipe_dict,
+                "additions": additions_dict,
+                "notes": r.get("description", ""),
+                "glazy_url": r.get("glazy_url", ""),
+                "rating": r.get("rating"),
+            })
+    
+    return all_refs
+
+ALL_REFERENCES = load_all_references()
+
 @app.route("/api/references")
 def get_references():
-    return jsonify(REFERENCE_GLAZES)
+    source = request.args.get("source", "all")
+    surface = request.args.get("surface", "all")
+    refs = ALL_REFERENCES
+    if source != "all":
+        refs = [r for r in refs if r.get("source") == source]
+    if surface != "all":
+        refs = [r for r in refs if surface in r.get("surface", "").lower()]
+    return jsonify(refs)
 
 
 @app.route("/api/design", methods=["POST"])

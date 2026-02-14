@@ -151,26 +151,61 @@
 
   // ── Library ──
   function setupLibrary() {
-    renderLibrary(references);
-    document.getElementById('lib-search').addEventListener('input', e => {
-      const q = e.target.value.toLowerCase();
-      renderLibrary(references.filter(r =>
-        r.name.toLowerCase().includes(q) || r.description.toLowerCase().includes(q)
-      ));
-    });
+    filterLibrary();
+    document.getElementById('lib-search').addEventListener('input', filterLibrary);
+    const srcFilter = document.getElementById('lib-source-filter');
+    const surfFilter = document.getElementById('lib-surface-filter');
+    if (srcFilter) srcFilter.addEventListener('change', filterLibrary);
+    if (surfFilter) surfFilter.addEventListener('change', filterLibrary);
+  }
+
+  function filterLibrary() {
+    const q = (document.getElementById('lib-search').value || '').toLowerCase();
+    const srcEl = document.getElementById('lib-source-filter');
+    const surfEl = document.getElementById('lib-surface-filter');
+    const src = srcEl ? srcEl.value : 'all';
+    const surf = surfEl ? surfEl.value : 'all';
+    
+    let filtered = references;
+    if (q) {
+      filtered = filtered.filter(r =>
+        (r.name || '').toLowerCase().includes(q) ||
+        (r.description || '').toLowerCase().includes(q) ||
+        (r.notes || '').toLowerCase().includes(q) ||
+        Object.keys(r.recipe || {}).some(m => m.toLowerCase().includes(q))
+      );
+    }
+    if (src !== 'all') {
+      filtered = filtered.filter(r => r.source === src);
+    }
+    if (surf !== 'all') {
+      filtered = filtered.filter(r => (r.surface || '').toLowerCase().includes(surf));
+    }
+    renderLibrary(filtered);
   }
 
   function renderLibrary(items) {
     const list = document.getElementById('lib-list');
+    const countEl = document.getElementById('lib-count');
     list.innerHTML = '';
+    if (countEl) countEl.textContent = `${items.length} recipe${items.length !== 1 ? 's' : ''}`;
+    
     items.forEach(ref => {
-      const mats = Object.keys(ref.recipe).join(', ');
+      const mats = Object.keys(ref.recipe || {}).join(', ');
+      const adds = ref.additions ? Object.keys(ref.additions).join(', ') : '';
+      const sourceBadge = ref.source ? `<span class="source-badge source-${ref.source}">${ref.source}</span>` : '';
+      const surfBadge = ref.surface ? `<span class="surface-badge">${ref.surface}</span>` : '';
+      const ratingStr = ref.rating ? `<span class="rating">★ ${ref.rating}</span>` : '';
+      
       const card = document.createElement('div');
       card.className = 'ref-card';
       card.innerHTML = `
-        <h4>${ref.name}</h4>
-        <p>${ref.description}</p>
-        <div class="ref-materials">${mats}</div>
+        <div class="ref-header">
+          <h4>${ref.name || 'Unnamed'}</h4>
+          <div class="ref-badges">${sourceBadge}${surfBadge}${ratingStr}</div>
+        </div>
+        <p class="ref-desc">${ref.description || ''}</p>
+        <div class="ref-materials">${mats}${adds ? ' + ' + adds : ''}</div>
       `;
       card.addEventListener('click', () => loadIntoAnalyzer(ref));
       list.appendChild(card);
