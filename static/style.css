@@ -663,3 +663,9 @@ input[type="number"] {
   color: var(--subtle);
   margin-top: 0.5rem;
 }
+
+/* Water ingredient rows */
+.water-ingredient td {
+  color: var(--subtle);
+  font-style: italic;
+}

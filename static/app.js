@@ -329,7 +329,13 @@
       });
     }
     const grandTotal = (additions || []).reduce((s, a) => s + a.grams, total);
-    html += `<tr class="total-row"><td>Total</td><td></td><td style="text-align:right">${grandTotal.toFixed(1)}</td></tr>`;
+    html += `<tr class="total-row"><td>Total dry</td><td></td><td style="text-align:right">${grandTotal.toFixed(1)}</td></tr>`;
+    // Water rows
+    const waterDip = Math.round(grandTotal * 0.75);
+    const waterSpray = Math.round(grandTotal * 0.95);
+    html += `<tr><td colspan="3"><span class="additions-label">+ Water</span></td></tr>`;
+    html += `<tr class="water-ingredient"><td>Water (dipping, SG ~1.47)</td><td></td><td style="text-align:right">${waterDip}</td></tr>`;
+    html += `<tr class="water-ingredient"><td>Water (spraying, SG ~1.35)</td><td></td><td style="text-align:right">${waterSpray}</td></tr>`;
     html += '</tbody>';
     return html;
   }
