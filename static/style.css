@@ -133,12 +133,15 @@ input[type="number"]:focus {
   position: relative;
 }
 .select-wrap::after {
-  content: '↓';
+  content: '';
   position: absolute;
-  right: 0;
-  bottom: 0.6rem;
-  font-size: 0.75rem;
-  color: var(--subtle);
+  right: 2px;
+  bottom: 0.85rem;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--subtle);
+  border-bottom: 1.5px solid var(--subtle);
+  transform: rotate(45deg);
   pointer-events: none;
 }
 select {
