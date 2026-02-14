@@ -316,6 +316,25 @@
       }
     }
 
+    // Ingredient explanations (design only)
+    if (prefix === 'design' && data.ingredient_explanations) {
+      const iec = document.getElementById('design-ingredients-card');
+      const ie = document.getElementById('design-ingredients-explain');
+      if (ie && data.ingredient_explanations.length) {
+        iec.style.display = '';
+        ie.innerHTML = data.ingredient_explanations.map(item => {
+          let html = `<div class="ingredient-explain">`;
+          html += `<strong>${escHtml(item.material)}</strong>`;
+          if (item.role) html += `<span class="ingredient-role"> — ${escHtml(item.role)}</span>`;
+          if (item.context) html += `<div class="ingredient-context">${escHtml(item.context)}</div>`;
+          html += `</div>`;
+          return html;
+        }).join('');
+      } else if (iec) {
+        iec.style.display = 'none';
+      }
+    }
+
     // Notes/explanation (design only)
     if (prefix === 'design') {
       const notesCard = document.getElementById('design-notes-card');

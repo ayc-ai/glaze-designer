@@ -686,3 +686,28 @@ input[type="number"] {
   font-style: normal;
   font-size: 0.82rem;
 }
+
+/* Ingredient explanations */
+.ingredient-explain {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.ingredient-explain:last-child {
+  border-bottom: none;
+}
+.ingredient-explain strong {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+.ingredient-role {
+  color: var(--text);
+  font-size: 0.85rem;
+}
+.ingredient-context {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-style: italic;
+  margin-top: 0.2rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--border);
+}

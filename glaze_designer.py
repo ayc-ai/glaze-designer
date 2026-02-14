@@ -466,6 +466,108 @@ def build_ingredient_explanations(recipe, colorant_additions, parsed, umf):
 
 
 # ══════════════════════════════════════════════════════════════════════════
+# Ingredient-level explanations
+# ══════════════════════════════════════════════════════════════════════════
+
+MATERIAL_ROLES = {
+    "Nepheline Syenite": "Supplies sodium and potassium (fluxes) plus alumina and silica. Melts the glaze and builds the glass matrix.",
+    "Custer Feldspar": "Primary flux source — provides potassium, sodium, alumina, and silica. The backbone of most glazes.",
+    "Minspar 200": "Sodium feldspar — similar to Custer but higher sodium. Promotes melt fluidity.",
+    "EPK Kaolin": "Adds alumina and silica. Keeps the glaze from running, helps suspension in the bucket.",
+    "Ball Clay": "Similar to kaolin but finer particle size. Improves suspension and adds alumina/silica.",
+    "Grolleg Kaolin": "High-purity English kaolin. Contributes alumina without adding iron impurities.",
+    "Silica": "Pure glass former (SiO2). Controls glaze hardness, durability, and surface texture. More silica = more durable, higher melting point.",
+    "Whiting": "Calcium carbonate — the workhorse flux. Promotes a hard, durable glaze surface. Most reliable flux for mid-fire.",
+    "Wollastonite": "Calcium silicate — supplies calcium flux without the CO2 gas release of whiting. Smoother melt, fewer pinholes.",
+    "Dolomite": "Supplies both calcium and magnesium. Magnesium promotes buttery matte surfaces.",
+    "Talc": "Magnesium silicate — contributes magnesia for smooth matte surfaces without the calcium of dolomite.",
+    "Ferro Frit 3134": "High-calcium boron frit — supplies boron flux (lowers melting point) and calcium. Makes glazes melt smoothly at lower temps.",
+    "Ferro Frit 3124": "Balanced boron frit with alumina. Similar to 3134 but more stable and less fluid.",
+    "Ferro Frit 3110": "High-sodium boron frit. Promotes fluidity and bright color response.",
+    "Zinc Oxide": "Promotes crystalline/matte surfaces and broadens the firing range. Can create micro-crystal textures.",
+    "Strontium Carbonate": "Alternative to whiting — gives a warmer, smoother quality. Enhances color response, especially blues.",
+    "Barium Carbonate": "Flux that promotes matte surfaces and blue-green color response. ⚠️ Toxic in raw form.",
+    "Lithium Carbonate": "Powerful low-expansion flux. A little goes a long way. Reduces crazing.",
+    "Gerstley Borate": "Natural boron source — supplies boron and calcium flux. Variable material, prone to batch inconsistency.",
+    "Bone Ash": "Tricalcium phosphate — promotes opalescence and crystal nucleation.",
+    "Spodumene": "Lithium feldspar — supplies lithium flux with lower expansion than lithium carbonate.",
+    "Red Iron Oxide": "Primary iron colorant. Cream (1%) → amber (2-3%) → brown (4-6%) → tenmoku (8-12%) → metallic crystals (12%+).",
+    "Cobalt Carbonate": "Strongest blue colorant. 0.25% gives sky blue, 1% gives deep blue. A little goes a long way.",
+    "Cobalt Oxide": "Concentrated cobalt — ~1.4x stronger than the carbonate. Use less.",
+    "Copper Carbonate": "Green in oxidation, red in reduction. In high-alkali bases shifts toward turquoise/blue.",
+    "Chrome Oxide": "Green colorant, very stable. 0.2-0.5% gives forest green.",
+    "Manganese Dioxide": "Purple-brown colorant. Combined with cobalt gives dark purple-black.",
+    "Rutile": "Titanium/iron mineral — promotes variegation, color breaks, and visual movement across the surface.",
+    "Tin Oxide": "White opacifier — makes transparent glazes opaque. Also serves as crystal nucleation sites.",
+    "Titanium Dioxide": "White opacifier with slight cream tone. Promotes crystalline effects at higher percentages.",
+    "Zircopax": "Strong white opacifier (zirconium silicate). 8-12% for full opacity.",
+    "Bentonite": "Suspension agent — keeps glaze mixed in the bucket. Not a significant chemistry contributor.",
+    "Silicon Carbide": "Creates localized reduction in oxidation kilns — CO2 bubbles reduce nearby iron/copper. Used for faux celadon and foam effects.",
+}
+
+def build_ingredient_explanations(recipe, colorant_additions, parsed, umf):
+    """Generate explanations for why each ingredient is in the recipe."""
+    explanations = []
+    
+    surface = parsed.get("surface", "glossy")
+    flux_sys = parsed.get("flux_system", "default")
+    colors = parsed.get("colors", [])
+    effects = parsed.get("effects", [])
+    
+    # Sort by percentage descending
+    all_mats = {}
+    total = sum(recipe.values())
+    for mat, amt in recipe.items():
+        all_mats[mat] = {"grams": amt, "pct": amt / total * 100 if total else 0, "is_addition": False}
+    for mat, amt in (colorant_additions or {}).items():
+        all_mats[mat] = {"grams": amt, "pct": amt / total * 100 if total else 0, "is_addition": True}
+    
+    for mat, info in sorted(all_mats.items(), key=lambda x: -x[1]["pct"]):
+        role = MATERIAL_ROLES.get(mat, "")
+        
+        # Add context for why this specific material was chosen for this glaze
+        context = ""
+        if mat in ("Dolomite", "Talc") and surface in ("matte", "buttery_matte"):
+            context = f"Chosen specifically for the {surface.replace('_', ' ')} surface you requested — magnesia is key to that buttery feel."
+        elif mat == "Zinc Oxide" and (surface == "zinc_matte" or surface == "crystalline"):
+            context = "High zinc drives the crystalline/matte texture you described."
+        elif "Frit" in mat and flux_sys == "boron_gloss":
+            context = "Boron frit provides the smooth, self-healing gloss surface."
+        elif mat == "Whiting" and info["pct"] > 12:
+            context = "High calcium — the primary flux driving this glaze's melt and durability."
+        elif mat == "Strontium Carbonate" and info["pct"] > 3:
+            context = "Strontium chosen over calcium for warmer tone and enhanced color response."
+        elif mat == "Nepheline Syenite" and info["pct"] > 40:
+            context = "Dominant material — provides most of the flux, alumina, and silica in a single ingredient."
+        elif mat == "Silica" and info["pct"] > 15:
+            context = "High silica for durability and to balance the flux ratio."
+        
+        # Colorant context
+        if mat == "Red Iron Oxide":
+            if any(c in colors for c in ["tenmoku", "saturated_iron"]):
+                context = "High iron for the dark, rich surface with potential crystal formation."
+            elif "celadon" in colors:
+                context = "Light iron wash — in the right base, this gives a subtle green-blue reminiscent of celadon."
+            elif any(c in colors for c in ["iron_amber", "iron_brown"]):
+                context = "Iron for warm amber-to-brown coloring."
+        elif mat == "Cobalt Carbonate" and "cobalt_blue" in colors:
+            context = "The blue you asked for — cobalt is the most reliable blue at any temperature."
+        elif mat == "Copper Carbonate" and "copper_green" in colors:
+            context = "Copper for the green — will be bright green in this oxidation base."
+        elif mat == "Rutile" and "rutile_variegation" in effects:
+            context = "This is what creates the variegation/breaking effect you described."
+        elif mat == "Silicon Carbide":
+            context = "Creates micro-bubbles of CO gas during firing — this is what produces the foam/reduction texture."
+        
+        entry = {"material": mat, "role": role}
+        if context:
+            entry["context"] = context
+        explanations.append(entry)
+    
+    return explanations
+
+
+# ══════════════════════════════════════════════════════════════════════════
 # Variation suggester
 # ══════════════════════════════════════════════════════════════════════════
 
