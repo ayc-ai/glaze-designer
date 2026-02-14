@@ -401,6 +401,7 @@ def design():
             "food_safety": result["food_safety"],
             "color_notes": result.get("color_notes", []),
             "explanation": result.get("explanation", []),
+            "ingredient_explanations": result.get("ingredient_explanations", ""),
             "notes": result.get("notes", []),
             "parsed": result.get("parsed", {}),
         })

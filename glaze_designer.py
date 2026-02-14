@@ -365,6 +365,11 @@ def design_glaze(description: str, clay_body: Optional[str] = None) -> dict:
         else:
             crazing_note = f"✅ Glaze CTE ({cte:.1f}) ≈ body CTE ({body_cte:.1f}) — good fit"
 
+    # Build ingredient-level explanations
+    ingredient_explanations = build_ingredient_explanations(
+        recipe, colorant_additions, parsed, umf
+    )
+
     return {
         "success": True,
         "description": description,
@@ -379,8 +384,85 @@ def design_glaze(description: str, clay_body: Optional[str] = None) -> dict:
         "food_safety": food_safety,
         "color_notes": color_notes,
         "explanation": explanation,
+        "ingredient_explanations": ingredient_explanations,
         "notes": parsed["notes"],
     }
+
+
+# ══════════════════════════════════════════════════════════════════════════
+# Ingredient explanations
+# ══════════════════════════════════════════════════════════════════════════
+
+MATERIAL_ROLES = {
+    "Nepheline Syenite": ("flux + glass former", "Supplies sodium and potassium (fluxes) plus silica and alumina. Melts at lower temperatures than feldspar, making it ideal for mid-fire."),
+    "Custer Feldspar": ("flux + glass former", "Potassium feldspar — supplies K₂O flux plus silica and alumina. Workhorse material for building glaze structure."),
+    "Ferro Frit 3134": ("flux (boron + calcium)", "Pre-melted glass frit high in boron and calcium. Reliable flux that promotes smooth, healed surfaces and helps the glaze melt evenly."),
+    "Ferro Frit 3124": ("flux (boron + calcium + alumina)", "Balanced boron frit with alumina. Less fluid than 3134, better for vertical surfaces."),
+    "Ferro Frit 3110": ("flux (sodium + boron)", "High-sodium boron frit. Promotes bright color response from colorants."),
+    "Silica": ("glass former", "Pure SiO₂ — the primary glass-building oxide. More silica = harder, more durable, more glossy. Also reduces thermal expansion (less crazing)."),
+    "EPK Kaolin": ("alumina + suspension", "Supplies Al₂O₃ (controls melt viscosity) and keeps the glaze from running off the pot. Also helps the raw glaze stay suspended in the bucket."),
+    "Ball Clay": ("alumina + suspension + plasticity", "Similar to kaolin but finer particle size. Better suspension, adds slight color from impurities."),
+    "Whiting": ("calcium flux", "Calcium carbonate — the most common high-fire flux. Promotes durability and a hard, scratch-resistant surface."),
+    "Wollastonite": ("calcium flux (low LOI)", "Calcium silicate — supplies CaO like whiting but with less gas release during firing. Reduces crawling and pinholing."),
+    "Dolomite": ("calcium + magnesia flux", "Supplies both CaO and MgO. The magnesia contributes to smooth, buttery matte surfaces."),
+    "Talc": ("magnesia flux", "Supplies MgO — promotes matte surfaces with a smooth, silky feel. Also helps lower thermal expansion."),
+    "Strontium Carbonate": ("strontium flux", "Alternative to calcium with a warmer, smoother quality. Gives softer color response and can improve glaze fit on some bodies."),
+    "Zinc Oxide": ("zinc flux", "Promotes crystalline and matte effects. Can create dramatic visual texture. High amounts may cause food safety concerns."),
+    "Gerstley Borate": ("boron flux", "Natural source of boron — powerful flux that helps glazes melt. Can be inconsistent batch-to-batch."),
+    "Lithium Carbonate": ("lithium flux", "Powerful low-expansion flux. A little goes a long way. Promotes bright colors and fluid melts."),
+    "Barium Carbonate": ("barium flux", "Promotes matte surfaces and certain blue effects. Toxic in raw form — must be fully incorporated into the glaze melt."),
+    "Spodumene": ("lithium flux + silica", "Lithium mineral — supplies Li₂O, Al₂O₃, and SiO₂. Low-expansion flux source."),
+    "Bone Ash": ("phosphorus", "Tricalcium phosphate — promotes opalescence, chun blue effects, and crystal nucleation."),
+    "Red Iron Oxide": ("colorant", "Iron — the most versatile ceramic colorant. Low % = amber/cream, medium = brown, high = black/metallic crystals."),
+    "Cobalt Carbonate": ("colorant", "The strongest blue colorant. Even 0.5% gives noticeable blue. More = deeper, darker blue."),
+    "Cobalt Oxide": ("colorant", "Concentrated cobalt — about 1.4x stronger than the carbonate form."),
+    "Copper Carbonate": ("colorant", "Green in oxidation, red in reduction. In high-alkali glazes, shifts toward turquoise/blue."),
+    "Chrome Oxide": ("colorant", "Strong green colorant. Can react with tin oxide to produce pink (chrome-tin pink)."),
+    "Manganese Dioxide": ("colorant", "Purple-brown colorant. Often combined with cobalt and iron for blacks."),
+    "Rutile": ("colorant + texture", "Titanium mineral with iron impurities. Creates variegation, breaking, and streaking effects. The go-to material for visual movement in a glaze."),
+    "Tin Oxide": ("opacifier", "Classic white opacifier. Also serves as crystal nucleation sites in crystalline/micro-crystalline glazes."),
+    "Titanium Dioxide": ("opacifier + texture", "White opacifier that can also create matte surfaces and crystal effects at higher percentages."),
+    "Zircopax": ("opacifier", "Zirconium silicate — strong, stable white opacifier. More predictable than tin oxide."),
+    "Bentonite": ("suspension agent", "Highly plastic clay added in small amounts to keep the glaze suspended in the bucket. Does not significantly affect fired chemistry."),
+    "Silicon Carbide": ("reducing agent", "Creates localized reduction inside an oxidation kiln by releasing CO gas. Used for faux celadon and luster effects."),
+}
+
+def build_ingredient_explanations(recipe, colorant_additions, parsed, umf):
+    """Build human-readable explanations of why each ingredient is in the recipe."""
+    lines = []
+    surface = parsed.get("surface", "glossy")
+    colors = parsed.get("colors", [])
+    effects = parsed.get("effects", [])
+    
+    # Sort by amount descending
+    all_mats = sorted(recipe.items(), key=lambda x: -x[1])
+    
+    lines.append(f"This recipe is built to achieve a **{surface}** surface" + 
+                 (f" with **{', '.join(colors + effects)}**." if (colors or effects) else "."))
+    lines.append("")
+    
+    for mat, amt in all_mats:
+        total = sum(recipe.values())
+        pct = amt / total * 100 if total else 0
+        role_info = MATERIAL_ROLES.get(mat)
+        if role_info:
+            role, desc = role_info
+            lines.append(f"**{mat}** ({pct:.0f}%) — _{role}_ — {desc}")
+        else:
+            lines.append(f"**{mat}** ({pct:.0f}%)")
+    
+    if colorant_additions:
+        lines.append("")
+        lines.append("**Colorant & effect additions:**")
+        for mat, amt in sorted(colorant_additions.items(), key=lambda x: -x[1]):
+            role_info = MATERIAL_ROLES.get(mat)
+            if role_info:
+                role, desc = role_info
+                lines.append(f"**+ {mat}** — _{role}_ — {desc}")
+            else:
+                lines.append(f"**+ {mat}**")
+    
+    return "\n".join(lines)
 
 
 # ══════════════════════════════════════════════════════════════════════════

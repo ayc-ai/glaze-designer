@@ -669,3 +669,20 @@ input[type="number"] {
   color: var(--subtle);
   font-style: italic;
 }
+
+/* Ingredient explanations */
+.ingredient-explanations {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+.ingredient-explanations p {
+  margin-bottom: 0.4rem;
+}
+.ingredient-explanations strong {
+  color: var(--text);
+}
+.ingredient-explanations em {
+  color: var(--accent);
+  font-style: normal;
+  font-size: 0.82rem;
+}

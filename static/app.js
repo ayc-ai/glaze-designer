@@ -299,6 +299,23 @@
       waterCard.style.display = 'none';
     }
 
+    // Ingredient explanations (design only)
+    if (prefix === 'design') {
+      const ingCard = document.getElementById('design-ingredients-card');
+      const ingEl = document.getElementById('design-ingredient-explanations');
+      if (ingEl && data.ingredient_explanations) {
+        ingEl.innerHTML = data.ingredient_explanations
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/_([^_]+)_/g, '<em>$1</em>')
+          .split('\n')
+          .map(l => l.trim() ? `<p>${l}</p>` : '')
+          .join('');
+        if (ingCard) ingCard.style.display = '';
+      } else if (ingCard) {
+        ingCard.style.display = 'none';
+      }
+    }
+
     // Notes/explanation (design only)
     if (prefix === 'design') {
       const notesCard = document.getElementById('design-notes-card');
