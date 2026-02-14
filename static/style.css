@@ -160,9 +160,19 @@ select {
 select::-ms-expand {
   display: none;
 }
-select:focus {
+select:focus,
+select:hover {
   outline: none;
-  border-bottom-color: var(--accent);
+  border-color: var(--accent);
+}
+select::-webkit-calendar-picker-indicator,
+select::-webkit-list-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+select option {
+  background: var(--card);
+  color: var(--text);
 }
 
 .form-row {
