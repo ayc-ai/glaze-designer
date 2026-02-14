@@ -225,6 +225,20 @@ def analyze_recipe(recipe_dict):
 
         description = describe_glaze(recipe_dict, umf, limits, cte, food_safety)
 
+        # Water recommendation for mixing
+        # Target specific gravity ~1.45-1.50 for dipping glazes
+        # SG = (dry + water) / (dry/2.5 + water)  where 2.5 is avg powder density
+        # For SG=1.45: water = dry * (2.5 - 1.45) / (1.45 * (2.5 - 1))
+        # Simplified: ~70-80% water by weight of dry materials for SG ~1.45-1.50
+        dry_total = sum(recipe_dict.values())
+        water_for_dip = round(dry_total * 0.75, 0)  # ~SG 1.47
+        water_for_spray = round(dry_total * 0.95, 0)  # thinner, ~SG 1.35
+        water_rec = {
+            "dipping": {"water_g": water_for_dip, "sg": 1.47, "note": "Standard dipping consistency"},
+            "spraying": {"water_g": water_for_spray, "sg": 1.35, "note": "Thinner for spray application"},
+            "note": f"For {dry_total:.0f}g dry materials. Adjust to preference — start thick, add water gradually. Always measure with a hydrometer if available."
+        }
+
         return {
             "success": True,
             "recipe": recipe_dict,
@@ -234,6 +248,7 @@ def analyze_recipe(recipe_dict):
             "cte": cte,
             "food_safety": food_safety,
             "description": description,
+            "water": water_rec,
         }
     except Exception as e:
         return {"success": False, "error": str(e)}

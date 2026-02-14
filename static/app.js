@@ -274,6 +274,31 @@
       fs.appendChild(d);
     });
 
+    // Water recommendation
+    const waterEl = document.getElementById(prefix + '-water');
+    const waterCard = document.getElementById(prefix + '-water-card');
+    if (waterEl && data.water) {
+      const w = data.water;
+      waterEl.innerHTML = `
+        <div class="water-row">
+          <div class="water-method">
+            <strong>Dipping</strong>
+            <span class="water-amount">${w.dipping.water_g.toFixed(0)}g water</span>
+            <span class="water-sg">SG ~${w.dipping.sg}</span>
+          </div>
+          <div class="water-method">
+            <strong>Spraying</strong>
+            <span class="water-amount">${w.spraying.water_g.toFixed(0)}g water</span>
+            <span class="water-sg">SG ~${w.spraying.sg}</span>
+          </div>
+        </div>
+        <p class="water-note">${escHtml(w.note)}</p>
+      `;
+      if (waterCard) waterCard.style.display = '';
+    } else if (waterCard) {
+      waterCard.style.display = 'none';
+    }
+
     // Notes/explanation (design only)
     if (prefix === 'design') {
       const notesCard = document.getElementById('design-notes-card');
@@ -340,11 +365,11 @@
       });
     }
 
-    addGroup('Fluxes (sum ≈ 1.0)', FLUX, 'flux');
-    addGroup('Amphoterics', AMPHOTERIC, 'amphoteric');
-    addGroup('Glass Formers', GLASS, 'glass');
+    addGroup('Fluxes (sum ≈ 1.0) — melt the glaze', FLUX, 'flux');
+    addGroup('Amphoteric — stabilize the melt', AMPHOTERIC, 'amphoteric');
+    addGroup('Glass Formers — build the glass', GLASS, 'glass');
     const hasColorant = COLORANT.some(ox => (umf[ox] || 0) > 0.0005);
-    if (hasColorant) addGroup('Colorants', COLORANT, 'colorant');
+    if (hasColorant) addGroup('Colorants — color & effects', COLORANT, 'colorant');
   }
 
   // ── Limits ──

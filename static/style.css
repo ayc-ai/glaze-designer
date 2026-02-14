@@ -622,3 +622,44 @@ input[type="number"] {
   color: var(--accent);
   font-weight: 600;
 }
+
+/* Section explainers */
+.section-explainer {
+  font-size: 0.82rem;
+  color: var(--subtle);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+/* Water recommendation */
+.water-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+}
+.water-method {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.water-method strong {
+  font-size: 0.85rem;
+  color: var(--text);
+}
+.water-amount {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+.water-sg {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--subtle);
+}
+.water-note {
+  font-size: 0.8rem;
+  color: var(--subtle);
+  margin-top: 0.5rem;
+}

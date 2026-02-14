@@ -64,11 +64,13 @@
 
           <section class="result-section">
             <h3>Unity Molecular Formula</h3>
+            <p class="section-explainer">UMF expresses your recipe as molecular ratios of oxides, normalized so all fluxes sum to 1.0. This lets you compare glazes regardless of batch size or which raw materials were used.</p>
             <div class="umf-chart" id="design-umf-chart"></div>
           </section>
 
           <section class="result-section">
             <h3>Limit Check</h3>
+            <p class="section-explainer">Standard oxide ranges for stable cone 6 glazes. Values outside limits aren't necessarily bad — many great glazes intentionally push boundaries.</p>
             <div id="design-limits"></div>
           </section>
 
@@ -98,6 +100,12 @@
               <button class="btn btn-outline btn-small" data-dir="more fluid">More Fluid</button>
               <button class="btn btn-outline btn-small" data-dir="less runny">Less Runny</button>
             </div>
+          </section>
+
+          <section class="result-section" id="design-water-card" style="display:none">
+            <h3>Mixing Water</h3>
+            <p class="section-explainer">Recommended water amounts for mixing this batch.</p>
+            <div class="water-rec" id="design-water"></div>
           </section>
 
           <section class="result-section">
@@ -150,10 +158,12 @@
           </section>
           <section class="result-section">
             <h3>Unity Molecular Formula</h3>
+            <p class="section-explainer">UMF expresses your recipe as molecular ratios of oxides, normalized so all fluxes sum to 1.0. This lets you compare glazes regardless of batch size or which raw materials were used — it's the universal language of glaze chemistry.</p>
             <div class="umf-chart" id="analyze-umf-chart"></div>
           </section>
           <section class="result-section">
             <h3>Limit Check</h3>
+            <p class="section-explainer">Standard oxide ranges for stable cone 6 glazes. Values outside limits aren't necessarily bad — many great glazes intentionally push boundaries for specific effects.</p>
             <div id="analyze-limits"></div>
           </section>
           <div class="result-row">
@@ -167,6 +177,12 @@
               <div id="analyze-food-safety"></div>
             </section>
           </div>
+
+          <section class="result-section" id="analyze-water-card" style="display:none">
+            <h3>Mixing Water</h3>
+            <p class="section-explainer">Recommended water amounts for mixing this batch. Start with the dipping amount and add more if needed.</p>
+            <div class="water-rec" id="analyze-water"></div>
+          </section>
         </div>
       </section>
 
