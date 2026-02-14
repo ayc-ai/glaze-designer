@@ -4,7 +4,7 @@ Ceramic Glaze Designer — Web Application
 import sys, os, json
 
 # Add parent directory so we can import glaze_engine and glaze_designer
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from flask import Flask, request, jsonify, send_from_directory
 import glaze_engine
@@ -13,7 +13,7 @@ import glaze_designer
 app = Flask(__name__, static_folder="static")
 
 # Load materials DB once
-DB_PATH = os.path.join(os.path.dirname(__file__), "..", "materials_db.json")
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "materials_db.json")
 with open(DB_PATH) as f:
     _raw_db = json.load(f)
 MATERIALS_DB = _raw_db["materials"]
