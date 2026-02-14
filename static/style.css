@@ -1,15 +1,15 @@
 /* Glaze Designer — Celadon Editorial Theme */
 
 :root {
-  --bg: #ACC8B5;
+  --bg: #B0C4B1;
   --card: #FAFAF7;
-  --text: #2C3E2D;
-  --accent: #5B7B5E;
-  --accent-hover: #4A6A4D;
-  --border: #D4DDD6;
-  --error: #C17C5A;
-  --success: #5B7B5E;
-  --subtle: #7A8F7C;
+  --text: #1A2B1C;
+  --accent: #4A6A4D;
+  --accent-hover: #3A5A3D;
+  --border: #C8D4CA;
+  --error: #B56A48;
+  --success: #4A6A4D;
+  --subtle: #5A7A5C;
   --green: #5B7B5E;
   --amber: #C4A84B;
   --red: #C17C5A;
