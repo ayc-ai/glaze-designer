@@ -91,6 +91,120 @@ REFERENCE_GLAZES = [
 ]
 
 
+def describe_glaze(recipe_dict, umf, limits, cte, food_safety):
+    """Generate a human-readable description of a glaze from its analysis."""
+    lines = []
+    
+    # Determine surface type from alumina:silica ratio
+    al = umf.get("Al2O3", 0)
+    si = umf.get("SiO2", 0)
+    ratio = si / al if al > 0.01 else 99
+    
+    if al < 0.15:
+        surface = "very fluid/crystalline"
+    elif al < 0.25:
+        surface = "fluid"
+    elif ratio > 8:
+        surface = "glossy"
+    elif ratio > 6:
+        surface = "satin"
+    else:
+        surface = "matte"
+    
+    # Dominant flux
+    fluxes = {k: umf.get(k, 0) for k in ["CaO","Na2O","K2O","MgO","ZnO","SrO","BaO","Li2O","B2O3"]}
+    top_flux = max(fluxes, key=fluxes.get) if fluxes else "CaO"
+    flux_names = {"CaO":"calcium","Na2O":"sodium","K2O":"potassium","MgO":"magnesia",
+                  "ZnO":"zinc","SrO":"strontium","BaO":"barium","Li2O":"lithium","B2O3":"boron"}
+    
+    # Colorants in recipe
+    colorant_map = {
+        "Red Iron Oxide": ("iron", "Fe2O3"), "Cobalt Carbonate": ("cobalt", "CoO"),
+        "Cobalt Oxide": ("cobalt", "CoO"), "Copper Carbonate": ("copper", "CuO"),
+        "Copper Oxide": ("copper", "CuO"), "Chrome Oxide": ("chrome", "Cr2O3"),
+        "Manganese Dioxide": ("manganese", "MnO"), "Rutile": ("rutile/titanium", "TiO2"),
+        "Tin Oxide": ("tin", "SnO2"), "Titanium Dioxide": ("titanium", "TiO2"),
+        "Zircopax": ("zirconium", "ZrO2"), "Silicon Carbide": ("silicon carbide", None),
+    }
+    colorants_found = []
+    for mat in recipe_dict:
+        if mat in colorant_map:
+            total = sum(recipe_dict.values())
+            pct = recipe_dict[mat] / total * 100 if total else 0
+            colorants_found.append((colorant_map[mat][0], pct))
+    
+    # Build description
+    lines.append(f"This is a **{surface}** glaze with a **{flux_names.get(top_flux, top_flux)}-dominant** flux system.")
+    
+    # Silica/alumina commentary
+    if si < 2.5:
+        lines.append(f"Low silica ({si:.1f}) makes this a fluid, active glaze — expect movement and potential for special effects.")
+    elif si > 4.0:
+        lines.append(f"High silica ({si:.1f}) gives this glaze durability and chemical resistance.")
+    
+    if al > 0.5:
+        lines.append(f"High alumina ({al:.2f}) will keep this glaze stiff and resistant to running.")
+    elif al < 0.2:
+        lines.append(f"Low alumina ({al:.2f}) — this glaze will be very fluid. Watch for running off vertical surfaces.")
+    
+    # Flux commentary
+    if fluxes.get("ZnO", 0) > 0.15:
+        lines.append("High zinc oxide promotes matte/crystalline surfaces and can create interesting textural effects.")
+    if fluxes.get("MgO", 0) > 0.15:
+        lines.append("Significant magnesia contributes a buttery, smooth matte surface quality.")
+    if fluxes.get("B2O3", 0) > 0.15:
+        lines.append("Boron flux helps the glaze melt at lower temperatures and promotes a smooth, healed surface.")
+    if fluxes.get("SrO", 0) > 0.1:
+        lines.append("Strontium gives a warmer, smoother quality than calcium — often preferred for subtle color responses.")
+    if fluxes.get("Na2O", 0) > 0.25:
+        lines.append("High sodium — expect high thermal expansion (potential crazing) and vivid color response from colorants.")
+    
+    # Colorant commentary
+    if colorants_found:
+        for cname, cpct in colorants_found:
+            if cname == "iron" and cpct > 10:
+                lines.append(f"Very high iron ({cpct:.1f}%) — saturated iron territory. Expect dark brown/black with possible metallic crystal formation on cooling.")
+            elif cname == "iron" and cpct > 5:
+                lines.append(f"Medium-high iron ({cpct:.1f}%) — tenmoku/dark amber range. Crystals possible with slow cooling.")
+            elif cname == "iron" and cpct > 1:
+                lines.append(f"Light iron ({cpct:.1f}%) — will give warm cream to amber tones depending on base chemistry.")
+            elif cname == "cobalt":
+                lines.append(f"Cobalt ({cpct:.1f}%) — strong blue colorant. A little goes a long way.")
+            elif cname == "copper":
+                lines.append(f"Copper ({cpct:.1f}%) — green in oxidation, can shift toward turquoise in high-alkali bases.")
+            elif cname == "rutile/titanium":
+                lines.append(f"Rutile ({cpct:.1f}%) — promotes variegation, breaking effects, and visual texture in the glaze surface.")
+            elif cname == "tin":
+                lines.append(f"Tin oxide ({cpct:.1f}%) — opacifier that also serves as crystal nucleation sites.")
+            elif cname == "silicon carbide":
+                lines.append(f"Silicon carbide ({cpct:.1f}%) — creates localized reduction in oxidation kilns. Used for faux celadon effects.")
+    else:
+        lines.append("No colorants detected — this should fire as a clear or white base glaze.")
+    
+    # CTE / fit
+    if isinstance(cte, dict):
+        cte_val = cte.get("value", 0)
+    else:
+        cte_val = cte
+    if cte_val > 80:
+        lines.append(f"High thermal expansion (CTE {cte_val:.0f}) — likely to craze on most bodies. Can be intentional for decorative crackle effects.")
+    elif cte_val > 70:
+        lines.append(f"Moderate thermal expansion (CTE {cte_val:.0f}) — should fit most mid-fire bodies well.")
+    elif cte_val < 65:
+        lines.append(f"Low thermal expansion (CTE {cte_val:.0f}) — good for porcelain. Risk of shivering on high-expansion bodies.")
+    
+    # Limits commentary
+    over = [l for l in limits if l.get("status") == "high"]
+    under = [l for l in limits if l.get("status") == "low"]
+    if over:
+        oxides = ", ".join(l["oxide"] for l in over)
+        lines.append(f"Note: {oxides} above standard cone 6 limits — this may be intentional for the desired effect.")
+    if not over and not under:
+        lines.append("All oxides within standard cone 6 limits — well-balanced chemistry.")
+    
+    return " ".join(lines)
+
+
 def analyze_recipe(recipe_dict):
     """Common analysis logic for a recipe dict {material: percent}."""
     # Validate materials
@@ -109,6 +223,8 @@ def analyze_recipe(recipe_dict):
         for mat, amt in sorted(recipe_dict.items(), key=lambda x: -x[1]):
             recipe_table.append({"material": mat, "percent": round(amt / total * 100, 1) if total else 0, "grams": round(amt, 2)})
 
+        description = describe_glaze(recipe_dict, umf, limits, cte, food_safety)
+
         return {
             "success": True,
             "recipe": recipe_dict,
@@ -117,6 +233,7 @@ def analyze_recipe(recipe_dict):
             "limits": limits,
             "cte": cte,
             "food_safety": food_safety,
+            "description": description,
         }
     except Exception as e:
         return {"success": False, "error": str(e)}

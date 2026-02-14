@@ -611,3 +611,14 @@ input[type="number"] {
   .library-filters { flex-direction: column; }
   .ref-header { flex-direction: column; gap: 0.25rem; }
 }
+
+/* Glaze description */
+.glaze-description {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+.glaze-description strong {
+  color: var(--accent);
+  font-weight: 600;
+}

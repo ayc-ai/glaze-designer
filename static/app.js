@@ -254,6 +254,16 @@
     document.getElementById(prefix + '-cte').textContent = cte.value.toFixed(1) + ' × 10⁻⁷/°C';
     document.getElementById(prefix + '-cte-note').textContent = cte.note || '';
 
+    // Description (analyze mode)
+    const descEl = document.getElementById(prefix + '-description');
+    const descCard = document.getElementById(prefix + '-description-card');
+    if (descEl && data.description) {
+      descEl.innerHTML = data.description.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      if (descCard) descCard.style.display = '';
+    } else if (descCard) {
+      descCard.style.display = 'none';
+    }
+
     // Food safety
     const fs = document.getElementById(prefix + '-food-safety');
     fs.innerHTML = '';
