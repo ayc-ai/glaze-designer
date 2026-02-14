@@ -5,159 +5,178 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Glaze Designer — Cone 6 Oxidation</title>
   <link rel="stylesheet" href="/static/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>🏺 Glaze <span>Designer</span></h1>
-    <div class="subtitle">Cone 6 Oxidation · Chemistry Engine</div>
-  </header>
+  <div class="container">
 
-  <nav class="tabs">
-    <button class="tab active" data-panel="design">Design</button>
-    <button class="tab" data-panel="analyze">Analyze</button>
-    <button class="tab" data-panel="library">Library</button>
-  </nav>
+    <header>
+      <h1>Glaze Designer</h1>
+      <p class="tagline">Cone 6 Oxidation · Chemistry Engine</p>
+    </header>
 
-  <main class="content">
+    <nav class="tabs">
+      <button class="tab active" data-panel="design">Design</button>
+      <button class="tab" data-panel="analyze">Analyze</button>
+      <button class="tab" data-panel="library">Library</button>
+    </nav>
 
-    <!-- ═══ DESIGN PANEL ═══ -->
-    <section id="design" class="panel active">
-      <div class="card">
-        <label for="glaze-desc">Describe your dream glaze...</label>
-        <textarea id="glaze-desc" placeholder="e.g. buttery matte white, food safe&#10;e.g. glossy tenmoku brown for stoneware&#10;e.g. satin blue-green with variegation"></textarea>
-        <div class="form-row" style="margin-top:1rem">
-          <div>
-            <label for="clay-body">Clay Body</label>
-            <select id="clay-body"></select>
-          </div>
-          <div>
-            <label for="cone-select">Cone</label>
-            <select id="cone-select">
-              <option value="5">5</option>
-              <option value="6" selected>6</option>
-            </select>
-          </div>
-          <div style="flex:0">
-            <label>&nbsp;</label>
-            <button class="btn btn-primary" id="design-btn">Design</button>
-          </div>
-        </div>
-      </div>
+    <main class="content">
 
-      <div class="loading" id="design-loading"><div class="spinner"></div><p>Calculating recipe...</p></div>
-      <div class="error-msg" id="design-error"></div>
-
-      <div class="results" id="design-results">
-        <div class="card">
-          <h3>📋 Recipe</h3>
-          <table class="recipe-table" id="design-recipe-table"></table>
-        </div>
-        <div class="card">
-          <h3>🔬 Unity Molecular Formula</h3>
-          <div class="umf-chart" id="design-umf-chart"></div>
-        </div>
-        <div class="card">
-          <h3>📏 Cone 6 Limit Check</h3>
-          <div id="design-limits"></div>
-        </div>
-        <div style="display:flex;gap:1.25rem;flex-wrap:wrap">
-          <div class="card" style="flex:1;min-width:200px">
-            <h3>🌡️ Thermal Expansion</h3>
-            <div class="cte-display" id="design-cte"></div>
-            <div class="cte-note" id="design-cte-note"></div>
-          </div>
-          <div class="card" style="flex:1;min-width:200px">
-            <h3>🍽️ Food Safety</h3>
-            <div id="design-food-safety"></div>
-          </div>
-        </div>
-        <div class="card" id="design-notes-card" style="display:none">
-          <h3>📝 Notes & Explanation</h3>
-          <div class="explanation-text" id="design-explanation"></div>
-        </div>
-
-        <div class="card">
-          <h3>Variations</h3>
-          <div class="variation-bar">
-            <button class="btn btn-secondary btn-small" data-dir="more matte">More Matte</button>
-            <button class="btn btn-secondary btn-small" data-dir="more glossy">More Glossy</button>
-            <button class="btn btn-secondary btn-small" data-dir="reduce crazing">Reduce Crazing</button>
-            <button class="btn btn-secondary btn-small" data-dir="more fluid">More Fluid</button>
-            <button class="btn btn-secondary btn-small" data-dir="less runny">Less Runny</button>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Scale Batch</h3>
-          <div class="scale-row">
-            <div>
-              <label for="scale-weight">Target Weight (g)</label>
-              <input type="number" id="scale-weight" value="1000" min="1">
+      <!-- ═══ DESIGN PANEL ═══ -->
+      <section id="design" class="panel active">
+        <div class="form-section">
+          <label for="glaze-desc">Describe your dream glaze</label>
+          <textarea id="glaze-desc" rows="4" placeholder="e.g. buttery matte white, food safe&#10;e.g. glossy tenmoku brown for stoneware&#10;e.g. satin blue-green with variegation"></textarea>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="clay-body">Clay Body</label>
+              <div class="select-wrap">
+                <select id="clay-body"></select>
+              </div>
             </div>
-            <button class="btn btn-secondary" id="scale-btn">Scale</button>
-            <button class="btn btn-secondary" onclick="window.print()">🖨️ Print</button>
+            <div class="form-field">
+              <label for="cone-select">Cone</label>
+              <div class="select-wrap">
+                <select id="cone-select">
+                  <option value="5">5</option>
+                  <option value="6" selected>6</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-field form-field--action">
+              <button class="btn btn-primary" id="design-btn">Design</button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ═══ ANALYZE PANEL ═══ -->
-    <section id="analyze" class="panel">
-      <div class="card">
-        <h3>Enter Recipe</h3>
-        <div id="analyze-rows"></div>
-        <div style="display:flex;gap:0.5rem;margin-top:0.75rem">
-          <button class="btn btn-secondary btn-small" id="add-material-btn">+ Add Material</button>
-          <button class="btn btn-primary" id="analyze-btn">Analyze</button>
+        <div class="loading" id="design-loading"><div class="spinner"></div><p>Calculating recipe…</p></div>
+        <div class="error-msg" id="design-error"></div>
+
+        <div class="results" id="design-results">
+
+          <section class="result-section">
+            <h3>Recipe</h3>
+            <div class="table-scroll">
+              <table class="recipe-table" id="design-recipe-table"></table>
+            </div>
+          </section>
+
+          <section class="result-section">
+            <h3>Unity Molecular Formula</h3>
+            <div class="umf-chart" id="design-umf-chart"></div>
+          </section>
+
+          <section class="result-section">
+            <h3>Limit Check</h3>
+            <div id="design-limits"></div>
+          </section>
+
+          <div class="result-row">
+            <section class="result-section result-section--half">
+              <h3>Thermal Expansion</h3>
+              <div class="cte-display" id="design-cte"></div>
+              <div class="cte-note" id="design-cte-note"></div>
+            </section>
+            <section class="result-section result-section--half">
+              <h3>Food Safety</h3>
+              <div id="design-food-safety"></div>
+            </section>
+          </div>
+
+          <section class="result-section" id="design-notes-card" style="display:none">
+            <h3>Notes</h3>
+            <div class="explanation-text" id="design-explanation"></div>
+          </section>
+
+          <section class="result-section">
+            <h3>Variations</h3>
+            <div class="variation-bar">
+              <button class="btn btn-outline btn-small" data-dir="more matte">More Matte</button>
+              <button class="btn btn-outline btn-small" data-dir="more glossy">More Glossy</button>
+              <button class="btn btn-outline btn-small" data-dir="reduce crazing">Reduce Crazing</button>
+              <button class="btn btn-outline btn-small" data-dir="more fluid">More Fluid</button>
+              <button class="btn btn-outline btn-small" data-dir="less runny">Less Runny</button>
+            </div>
+          </section>
+
+          <section class="result-section">
+            <h3>Scale Batch</h3>
+            <div class="scale-row">
+              <div class="form-field">
+                <label for="scale-weight">Target weight (g)</label>
+                <input type="number" id="scale-weight" value="1000" min="1">
+              </div>
+              <button class="btn btn-outline" id="scale-btn">Scale</button>
+              <button class="btn btn-outline" onclick="window.print()">Print</button>
+            </div>
+          </section>
+
         </div>
-        <div class="form-row" style="margin-top:1rem">
-          <div>
-            <label for="analyze-clay-body">Clay Body (for CTE fit)</label>
-            <select id="analyze-clay-body"></select>
+      </section>
+
+      <!-- ═══ ANALYZE PANEL ═══ -->
+      <section id="analyze" class="panel">
+        <div class="form-section">
+          <h3>Enter Recipe</h3>
+          <div id="analyze-rows"></div>
+          <div class="form-actions">
+            <button class="btn btn-outline btn-small" id="add-material-btn">+ Add Material</button>
+            <button class="btn btn-primary" id="analyze-btn">Analyze</button>
+          </div>
+          <div class="form-row" style="margin-top:1.5rem">
+            <div class="form-field">
+              <label for="analyze-clay-body">Clay Body (for CTE fit)</label>
+              <div class="select-wrap">
+                <select id="analyze-clay-body"></select>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="loading" id="analyze-loading"><div class="spinner"></div><p>Analyzing...</p></div>
-      <div class="error-msg" id="analyze-error"></div>
+        <div class="loading" id="analyze-loading"><div class="spinner"></div><p>Analyzing…</p></div>
+        <div class="error-msg" id="analyze-error"></div>
 
-      <div class="results" id="analyze-results">
-        <div class="card">
-          <h3>📋 Recipe</h3>
-          <table class="recipe-table" id="analyze-recipe-table"></table>
-        </div>
-        <div class="card">
-          <h3>🔬 Unity Molecular Formula</h3>
-          <div class="umf-chart" id="analyze-umf-chart"></div>
-        </div>
-        <div class="card">
-          <h3>📏 Cone 6 Limit Check</h3>
-          <div id="analyze-limits"></div>
-        </div>
-        <div style="display:flex;gap:1.25rem;flex-wrap:wrap">
-          <div class="card" style="flex:1;min-width:200px">
-            <h3>🌡️ Thermal Expansion</h3>
-            <div class="cte-display" id="analyze-cte"></div>
-            <div class="cte-note" id="analyze-cte-note"></div>
+        <div class="results" id="analyze-results">
+          <section class="result-section">
+            <h3>Recipe</h3>
+            <div class="table-scroll">
+              <table class="recipe-table" id="analyze-recipe-table"></table>
+            </div>
+          </section>
+          <section class="result-section">
+            <h3>Unity Molecular Formula</h3>
+            <div class="umf-chart" id="analyze-umf-chart"></div>
+          </section>
+          <section class="result-section">
+            <h3>Limit Check</h3>
+            <div id="analyze-limits"></div>
+          </section>
+          <div class="result-row">
+            <section class="result-section result-section--half">
+              <h3>Thermal Expansion</h3>
+              <div class="cte-display" id="analyze-cte"></div>
+              <div class="cte-note" id="analyze-cte-note"></div>
+            </section>
+            <section class="result-section result-section--half">
+              <h3>Food Safety</h3>
+              <div id="analyze-food-safety"></div>
+            </section>
           </div>
-          <div class="card" style="flex:1;min-width:200px">
-            <h3>🍽️ Food Safety</h3>
-            <div id="analyze-food-safety"></div>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ═══ LIBRARY PANEL ═══ -->
-    <section id="library" class="panel">
-      <div class="card ref-search">
-        <input type="text" id="lib-search" placeholder="Search glazes...">
-      </div>
-      <div id="lib-list"></div>
-    </section>
+      <!-- ═══ LIBRARY PANEL ═══ -->
+      <section id="library" class="panel">
+        <div class="form-section">
+          <input type="text" id="lib-search" placeholder="Search glazes…">
+        </div>
+        <div id="lib-list"></div>
+      </section>
 
-  </main>
+    </main>
+
+  </div>
 
   <script src="/static/app.js"></script>
 </body>

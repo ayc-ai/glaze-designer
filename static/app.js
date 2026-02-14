@@ -5,7 +5,7 @@
   let materials = [];
   let clayBodies = [];
   let references = [];
-  let currentResult = null; // store last design result for variations
+  let currentResult = null;
 
   // ── Init ──
   async function init() {
@@ -58,7 +58,6 @@
     document.querySelectorAll('.variation-bar .btn').forEach(b => {
       b.addEventListener('click', () => doVariation(b.dataset.dir));
     });
-    // Enter key in textarea
     document.getElementById('glaze-desc').addEventListener('keydown', e => {
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); doDesign(); }
     });
@@ -100,14 +99,12 @@
   async function doScale() {
     if (!currentResult) return;
     const weight = parseFloat(document.getElementById('scale-weight').value) || 1000;
-    // Scale base recipe + additions
     const fullRecipe = {...currentResult.recipe};
     if (currentResult.additions_table) {
       currentResult.additions_table.forEach(a => { fullRecipe[a.material] = a.grams; });
     }
     const data = await api('/api/scale', {recipe: fullRecipe, target_weight: weight});
     if (data.success) {
-      // Re-render just the recipe table with scaled values
       const table = document.getElementById('design-recipe-table');
       table.innerHTML = buildRecipeTableHTML(data.recipe_table, [], data.total_weight);
     }
@@ -123,10 +120,10 @@
     const container = document.getElementById('analyze-rows');
     const row = document.createElement('div');
     row.className = 'material-row';
-    let opts = '<option value="">Select material...</option>';
+    let opts = '<option value="">Select material…</option>';
     materials.forEach(m => { opts += `<option value="${m}">${m}</option>`; });
     row.innerHTML = `
-      <select>${opts}</select>
+      <div class="select-wrap"><select>${opts}</select></div>
       <input type="number" placeholder="%" min="0" step="0.1">
       <button class="btn-icon" title="Remove" onclick="this.parentElement.remove()">×</button>
     `;
@@ -181,13 +178,11 @@
   }
 
   function loadIntoAnalyzer(ref) {
-    // Switch to analyze tab
     document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
     document.querySelector('[data-panel="analyze"]').classList.add('active');
     document.getElementById('analyze').classList.add('active');
 
-    // Fill rows
     const container = document.getElementById('analyze-rows');
     container.innerHTML = '';
     const allMats = {...ref.recipe, ...(ref.additions || {})};
@@ -278,7 +273,6 @@
   function renderUMFChart(prefix, umf) {
     const container = document.getElementById(prefix + '-umf-chart');
     container.innerHTML = '';
-    // Find max for scaling (SiO2 is usually biggest)
     const maxVal = Math.max(...Object.values(umf), 0.01);
 
     function addGroup(label, oxides, cls) {
@@ -313,21 +307,19 @@
     const container = document.getElementById(prefix + '-limits');
     container.innerHTML = '';
     if (!limits) return;
-    // max value for bar scaling
     const maxLimit = Math.max(...limits.map(l => Math.max(l.max, l.value)), 1);
     limits.forEach(l => {
       const row = document.createElement('div');
       row.className = 'limit-row';
-      const icon = l.status === 'ok' ? '●' : l.status === 'low' ? '▼' : '▲';
       const rangeLeft = (l.min / maxLimit * 100).toFixed(1);
       const rangeWidth = ((l.max - l.min) / maxLimit * 100).toFixed(1);
       const markerPos = Math.min(Math.max(l.value / maxLimit * 100, 0), 100).toFixed(1);
       row.innerHTML = `
-        <span class="limit-icon ${l.status}">${icon}</span>
+        <span class="limit-dot ${l.status}"></span>
         <span class="limit-oxide">${l.oxide}</span>
         <div class="limit-bar">
           <div class="limit-range" style="left:${rangeLeft}%;width:${rangeWidth}%"></div>
-          <div class="limit-marker ${l.status}" style="left:calc(${markerPos}% - 1.5px)"></div>
+          <div class="limit-marker ${l.status}" style="left:calc(${markerPos}% - 1px)"></div>
         </div>
         <span class="limit-value">${l.value.toFixed(3)}</span>
       `;
@@ -356,6 +348,5 @@
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  // Go
   init();
 })();
