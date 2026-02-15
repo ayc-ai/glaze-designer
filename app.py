@@ -539,12 +539,14 @@ def generate_image():
         return jsonify({"success": False, "message": "No description provided."})
 
     prompt = (
-        f"A close-up photograph of a ceramic pottery piece with this glaze: {description}. "
-        f"Recipe context: {recipe_summary}. "
-        "The image should look like a real photograph of a finished ceramic piece fresh from a kiln — "
-        "show the glaze surface texture, color depth, and any special effects like crystals, floating, "
-        "crackling, or variegation. Natural studio lighting, shallow depth of field. "
-        "The piece should be a simple bowl or cup shape so the glaze is the focus."
+        f"A close-up macro photograph of a ceramic glaze test tile. The glaze is: {description}. "
+        "Shot from above at a slight angle, filling the frame. Show only the glazed ceramic surface — "
+        "no text, no labels, no annotations, no diagrams, no words of any kind. "
+        "Focus on the glaze surface texture, color depth, light reflections, and any visible effects "
+        "like crazing lines, crystals, color breaks, or pooling. "
+        "The test tile is a simple flat or slightly curved piece. Neutral background. "
+        "Natural soft studio lighting. Photorealistic, shot on a macro lens, shallow depth of field. "
+        "Style: ceramic glaze test tile photography as seen on Glazy.org or ceramic studio documentation."
     )
 
     payload = json.dumps({
@@ -592,9 +594,27 @@ def generate_image():
                 f.write(f"*Generated {time.strftime('%Y-%m-%d %H:%M')}*\n\n")
                 f.write(f"![Preview]({img_name})\n\n")
                 if recipe_summary:
-                    f.write(f"## Recipe\n\n{recipe_summary}\n\n")
+                    f.write("## Recipe\n\n")
+                    f.write("| Material | % |\n|---|---|\n")
+                    for part in recipe_summary.split(', '):
+                        # "Nepheline Syenite 25.8%" → table row
+                        idx = part.rfind(' ')
+                        if idx > 0:
+                            f.write(f"| {part[:idx]} | {part[idx+1:]} |\n")
+                        else:
+                            f.write(f"| {part} | |\n")
+                    f.write("\n")
                 if ingredients_html:
-                    f.write(f"## How It Works\n\n{ingredients_html}\n\n")
+                    f.write("## How It Works\n\n")
+                    for line in ingredients_html.strip().split('\n'):
+                        line = line.strip()
+                        if line:
+                            # Split on " — " to get material name vs explanation
+                            if ' — ' in line:
+                                mat, expl = line.split(' — ', 1)
+                                f.write(f"**{mat.strip()}** — {expl.strip()}\n\n")
+                            else:
+                                f.write(f"{line}\n\n")
             saved_path = img_path
         except Exception as save_err:
             print(f"Warning: could not save image locally: {save_err}")
