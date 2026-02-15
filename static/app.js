@@ -476,17 +476,32 @@
       if (cells.length >= 2) parts.push(cells[0].textContent + ' ' + cells[1].textContent + '%');
     });
 
+    // Gather ingredients explanation text
+    const ingredientEls = document.querySelectorAll('#design-ingredient-explanations .ingredient-explain, #design-ingredients-explain .ingredient-explain');
+    let ingredientsText = '';
+    ingredientEls.forEach(el => { ingredientsText += el.textContent.trim() + '\n\n'; });
+
     try {
       const resp = await fetch('/api/generate-image', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ description: desc, recipe_summary: parts.join(', ') })
+        body: JSON.stringify({
+          description: desc,
+          recipe_summary: parts.join(', '),
+          ingredients_html: ingredientsText
+        })
       });
       const data = await resp.json();
       loading.style.display = 'none';
       if (data.success && data.image_url) {
         img.src = data.image_url;
         img.style.display = '';
+        if (data.saved_path) {
+          const note = document.createElement('p');
+          note.className = 'section-explainer';
+          note.textContent = 'Saved to saved_glazes/ folder';
+          img.parentNode.appendChild(note);
+        }
       } else {
         btn.style.display = '';
         btn.textContent = 'Retry';

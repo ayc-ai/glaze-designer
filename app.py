@@ -568,7 +568,38 @@ def generate_image():
             result = json.loads(resp.read().decode())
         image_url = result["data"][0]["url"]
         revised_prompt = result["data"][0].get("revised_prompt", "")
-        return jsonify({"success": True, "image_url": image_url, "revised_prompt": revised_prompt})
+
+        # Auto-save image locally
+        saved_path = ""
+        try:
+            save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "saved_glazes")
+            os.makedirs(save_dir, exist_ok=True)
+            import re, time
+            slug = re.sub(r'[^a-z0-9]+', '-', description.lower().strip())[:60].strip('-')
+            ts = time.strftime("%Y%m%d-%H%M%S")
+            img_name = f"{ts}_{slug}.png"
+            img_path = os.path.join(save_dir, img_name)
+            with urllib.request.urlopen(image_url, timeout=30) as img_resp:
+                with open(img_path, 'wb') as f:
+                    f.write(img_resp.read())
+
+            # Save recipe card alongside
+            recipe_html = data.get("recipe_html", "")
+            ingredients_html = data.get("ingredients_html", "")
+            card_path = os.path.join(save_dir, f"{ts}_{slug}.md")
+            with open(card_path, 'w') as f:
+                f.write(f"# {description}\n\n")
+                f.write(f"*Generated {time.strftime('%Y-%m-%d %H:%M')}*\n\n")
+                f.write(f"![Preview]({img_name})\n\n")
+                if recipe_summary:
+                    f.write(f"## Recipe\n\n{recipe_summary}\n\n")
+                if ingredients_html:
+                    f.write(f"## How It Works\n\n{ingredients_html}\n\n")
+            saved_path = img_path
+        except Exception as save_err:
+            print(f"Warning: could not save image locally: {save_err}")
+
+        return jsonify({"success": True, "image_url": image_url, "revised_prompt": revised_prompt, "saved_path": saved_path})
     except urllib.error.HTTPError as e:
         body = e.read().decode() if e.fp else ""
         try:
