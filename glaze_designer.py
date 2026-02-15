@@ -137,6 +137,10 @@ COLOR_SYSTEMS = {
         "additions": {"Rutile": 4.0},
         "notes": "Rutile for variegation/breaking, 3-5%",
     },
+    "manganese_purple": {
+        "additions": {"Manganese Dioxide": 3.0},
+        "notes": "Manganese for purple — works with cobalt to produce violet tones",
+    },
 }
 
 # ── Material selection for different flux systems ─────────────────────────
@@ -207,38 +211,41 @@ def parse_description(desc: str) -> dict:
     elif "crystalline" in d:
         result["flux_system"] = "crystalline"
 
-    # Colors
+    # Colors — build a list, not elif chain so combos work
     if "tenmoku" in d or "temoku" in d:
         result["colors"].append("tenmoku")
-    elif "celadon" in d:
+    if "celadon" in d:
         result["colors"].append("celadon")
         result["notes"].append("True celadon requires reduction firing; this is an oxidation approximation")
-    elif "black" in d:
+    if "black" in d and "celadon" not in d:
         result["colors"].append("black")
-    elif any(w in d for w in ["blue-green", "blue green", "teal"]):
+    if "purple" in d or "violet" in d or "plum" in d or "lavender" in d:
+        result["colors"].extend(["cobalt_blue", "manganese_purple"])
+        result["notes"].append("Purple in oxidation: cobalt + manganese combination. Depth varies with base chemistry.")
+    if any(w in d for w in ["blue-green", "blue green", "teal", "turquoise"]):
         result["colors"].extend(["cobalt_blue", "copper_green"])
     elif "blue" in d and "rutile" in d:
         result["colors"].append("cobalt_blue")
         result["effects"].append("rutile_variegation")
         result["notes"].append("Rutile blue works best on a boron/high-alumina base")
-    elif "blue" in d:
+    elif "blue" in d and "purple" not in d and "violet" not in d:
         result["colors"].append("cobalt_blue")
-    elif "green" in d and "chrome" in d:
+    if "green" in d and "chrome" in d:
         result["colors"].append("chrome_green")
-    elif "green" in d:
+    elif "green" in d and "blue" not in d and "teal" not in d:
         result["colors"].append("copper_green")
-    elif "red" in d or "orange" in d:
+    if ("red" in d or "orange" in d) and "iron" not in d and "celadon" not in d:
         result["notes"].append("True reds/oranges are impossible in cone 6 oxidation without inclusion stains. Using saturated iron red as closest alternative.")
         result["colors"].append("saturated_iron")
-    elif "amber" in d:
+    if "amber" in d:
         result["colors"].append("iron_amber")
-    elif "brown" in d:
+    if "brown" in d and "tenmoku" not in d:
         result["colors"].append("iron_brown")
-    elif "iron" in d and not any(c in d for c in ["blue", "green", "black"]):
+    if "iron" in d and not any(c in d for c in ["blue", "green", "black", "amber", "brown", "tenmoku", "celadon", "red"]):
         result["colors"].append("iron_brown")
 
     # White/cream
-    if "white" in d:
+    if "white" in d and "clear" not in d:
         result["colors"].append("zircopax_white")
     elif "cream" in d:
         result["colors"].append("titanium_white")
@@ -247,10 +254,29 @@ def parse_description(desc: str) -> dict:
     if any(w in d for w in ["variegat", "breaking", "rutile"]) and "rutile_variegation" not in result["effects"]:
         result["effects"].append("rutile_variegation")
 
-    # Clear/transparent — no colorants
-    if "clear" in d or "transparent" in d:
+    # Transparent — don't add opacifiers, but keep colorants
+    if "transparent" in d:
+        result["colors"] = [c for c in result["colors"] if c not in ("zircopax_white", "tin_white", "titanium_white")]
+        result["notes"].append("Transparent base — no opacifiers added. Color will be translucent.")
+    
+    # Clear = no color at all
+    if "clear" in d and not any(w in d for w in ["blue", "green", "purple", "red", "amber", "brown", "black", "tenmoku", "celadon", "copper", "iron", "cobalt"]):
         result["colors"] = []
         result["effects"] = []
+
+    # Crazing intent
+    if "craz" in d:
+        if "no craz" in d or "without craz" in d or "reduce craz" in d or "prevent craz" in d:
+            result["notes"].append("Targeting low thermal expansion to prevent crazing.")
+            result["effects"].append("low_expansion")
+        else:
+            result["notes"].append("Intentional crazing — using high-alkali flux to raise thermal expansion.")
+            result["effects"].append("intentional_crazing")
+
+    # Stability / doesn't run
+    if any(w in d for w in ["stable", "doesn't run", "doesnt run", "don't run", "no run", "stiff"]):
+        result["notes"].append("Prioritizing stability — higher alumina to keep the glaze from moving.")
+        result["effects"].append("high_stability")
 
     # Food safety
     if "food safe" in d or "food-safe" in d or "foodsafe" in d:
@@ -296,6 +322,24 @@ def design_glaze(description: str, clay_body: Optional[str] = None) -> dict:
         target_umf[oxide] = (lo + hi) / 2.0
     for oxide, (lo, hi) in surface.items():
         target_umf[oxide] = (lo + hi) / 2.0
+
+    # Apply special effects to target UMF
+    if "intentional_crazing" in parsed["effects"]:
+        # Boost Na2O for high thermal expansion
+        target_umf["Na2O"] = target_umf.get("Na2O", 0.15) + 0.10
+        target_umf["SiO2"] = max(target_umf.get("SiO2", 3.5) - 0.5, 2.0)
+        explanation.append("Adjusted for intentional crazing: boosted Na2O, lowered SiO2")
+    
+    if "low_expansion" in parsed["effects"]:
+        # Lower alkalis, boost silica
+        target_umf["Na2O"] = max(target_umf.get("Na2O", 0.15) - 0.05, 0.05)
+        target_umf["SiO2"] = target_umf.get("SiO2", 3.5) + 0.5
+        explanation.append("Adjusted for low expansion: reduced Na2O, boosted SiO2")
+    
+    if "high_stability" in parsed["effects"]:
+        # Boost alumina to stiffen the melt
+        target_umf["Al2O3"] = target_umf.get("Al2O3", 0.35) + 0.08
+        explanation.append("Boosted alumina for stability — glaze will resist running")
 
     # Normalize fluxes to sum to 1.0
     from glaze_engine import FLUX_OXIDES
@@ -554,6 +598,11 @@ def build_ingredient_explanations(recipe, colorant_additions, parsed, umf):
             context = "The blue you asked for — cobalt is the most reliable blue at any temperature."
         elif mat == "Copper Carbonate" and "copper_green" in colors:
             context = "Copper for the green — will be bright green in this oxidation base."
+        elif mat == "Manganese Dioxide":
+            if "manganese_purple" in colors:
+                context = "Combined with cobalt, manganese produces the purple/violet color you asked for."
+            else:
+                context = "Manganese for brown-purple tones."
         elif mat == "Rutile" and "rutile_variegation" in effects:
             context = "This is what creates the variegation/breaking effect you described."
         elif mat == "Silicon Carbide":
