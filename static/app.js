@@ -300,23 +300,6 @@
     }
 
     // Ingredient explanations (design only)
-    if (prefix === 'design') {
-      const ingCard = document.getElementById('design-ingredients-card');
-      const ingEl = document.getElementById('design-ingredient-explanations');
-      if (ingEl && data.ingredient_explanations) {
-        ingEl.innerHTML = data.ingredient_explanations
-          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-          .replace(/_([^_]+)_/g, '<em>$1</em>')
-          .split('\n')
-          .map(l => l.trim() ? `<p>${l}</p>` : '')
-          .join('');
-        if (ingCard) ingCard.style.display = '';
-      } else if (ingCard) {
-        ingCard.style.display = 'none';
-      }
-    }
-
-    // Ingredient explanations (design only)
     if (prefix === 'design' && data.ingredient_explanations) {
       const iec = document.getElementById('design-ingredients-card');
       const ie = document.getElementById('design-ingredients-explain');
