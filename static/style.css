@@ -721,6 +721,20 @@ input[type="number"] {
   font-style: italic;
 }
 
+/* Preview image */
+#preview-image {
+  width: 100%;
+  max-width: 512px;
+  border-radius: 6px;
+  margin-top: 0.75rem;
+}
+.preview-loading {
+  font-size: 0.9rem;
+  color: var(--subtle);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
 /* Print / PDF styles */
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }

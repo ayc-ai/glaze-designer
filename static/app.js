@@ -65,6 +65,7 @@
     document.querySelectorAll('.variation-bar .btn').forEach(b => {
       b.addEventListener('click', () => doVariation(b.dataset.dir));
     });
+    document.getElementById('generate-preview-btn').addEventListener('click', doGeneratePreview);
     document.getElementById('glaze-desc').addEventListener('keydown', e => {
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); doDesign(); }
     });
@@ -340,6 +341,13 @@
       } else {
         notesCard.style.display = 'none';
       }
+
+      // Show preview card (reset state)
+      const previewCard = document.getElementById('design-preview-card');
+      previewCard.style.display = '';
+      document.getElementById('generate-preview-btn').style.display = '';
+      document.getElementById('preview-loading').style.display = 'none';
+      document.getElementById('preview-image').style.display = 'none';
     }
   }
 
@@ -448,6 +456,48 @@
   }
   function escHtml(s) {
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  async function doGeneratePreview() {
+    const desc = document.getElementById('glaze-desc').value;
+    if (!desc) return;
+    const btn = document.getElementById('generate-preview-btn');
+    const loading = document.getElementById('preview-loading');
+    const img = document.getElementById('preview-image');
+    btn.style.display = 'none';
+    loading.style.display = '';
+    img.style.display = 'none';
+
+    // Build a recipe summary from the table
+    const rows = document.querySelectorAll('#design-recipe-table tbody tr');
+    const parts = [];
+    rows.forEach(r => {
+      const cells = r.querySelectorAll('td');
+      if (cells.length >= 2) parts.push(cells[0].textContent + ' ' + cells[1].textContent + '%');
+    });
+
+    try {
+      const resp = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ description: desc, recipe_summary: parts.join(', ') })
+      });
+      const data = await resp.json();
+      loading.style.display = 'none';
+      if (data.success && data.image_url) {
+        img.src = data.image_url;
+        img.style.display = '';
+      } else {
+        btn.style.display = '';
+        btn.textContent = 'Retry';
+        showError('design', data.message || 'Image generation failed');
+      }
+    } catch (e) {
+      loading.style.display = 'none';
+      btn.style.display = '';
+      btn.textContent = 'Retry';
+      showError('design', 'Image generation failed: ' + e.message);
+    }
   }
 
   init();

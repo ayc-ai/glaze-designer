@@ -521,7 +521,63 @@ def scale():
 
 @app.route("/api/generate-image", methods=["POST"])
 def generate_image():
-    return jsonify({"success": False, "message": "Add OpenAI API key to enable glaze image generation."})
+    import urllib.request, urllib.error
+    OPENAI_KEY = os.environ.get("OPENAI_API_KEY", "")
+    # Also check a local .env file
+    if not OPENAI_KEY:
+        env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
+        if os.path.exists(env_path):
+            for line in open(env_path):
+                if line.startswith('OPENAI_API_KEY='):
+                    OPENAI_KEY = line.split('=', 1)[1].strip()
+    if not OPENAI_KEY:
+        return jsonify({"success": False, "message": "Set OPENAI_API_KEY in .env file to enable image generation."})
+    data = request.get_json() or {}
+    description = data.get("description", "")
+    recipe_summary = data.get("recipe_summary", "")
+    if not description:
+        return jsonify({"success": False, "message": "No description provided."})
+
+    prompt = (
+        f"A close-up photograph of a ceramic pottery piece with this glaze: {description}. "
+        f"Recipe context: {recipe_summary}. "
+        "The image should look like a real photograph of a finished ceramic piece fresh from a kiln — "
+        "show the glaze surface texture, color depth, and any special effects like crystals, floating, "
+        "crackling, or variegation. Natural studio lighting, shallow depth of field. "
+        "The piece should be a simple bowl or cup shape so the glaze is the focus."
+    )
+
+    payload = json.dumps({
+        "model": "dall-e-3",
+        "prompt": prompt,
+        "n": 1,
+        "size": "1024x1024",
+        "quality": "standard"
+    }).encode()
+
+    req = urllib.request.Request(
+        "https://api.openai.com/v1/images/generations",
+        data=payload,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {OPENAI_KEY}"
+        }
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            result = json.loads(resp.read().decode())
+        image_url = result["data"][0]["url"]
+        revised_prompt = result["data"][0].get("revised_prompt", "")
+        return jsonify({"success": True, "image_url": image_url, "revised_prompt": revised_prompt})
+    except urllib.error.HTTPError as e:
+        body = e.read().decode() if e.fp else ""
+        try:
+            err_msg = json.loads(body).get("error", {}).get("message", body)
+        except Exception:
+            err_msg = body
+        return jsonify({"success": False, "message": f"OpenAI error: {err_msg}"}), 500
+    except Exception as e:
+        return jsonify({"success": False, "message": str(e)}), 500
 
 
 if __name__ == "__main__":
