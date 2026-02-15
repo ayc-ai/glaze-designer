@@ -55,6 +55,13 @@
   function setupDesign() {
     document.getElementById('design-btn').addEventListener('click', doDesign);
     document.getElementById('scale-btn').addEventListener('click', doScale);
+    document.getElementById('export-btn').addEventListener('click', () => {
+      const desc = document.getElementById('glaze-desc').value || 'Glaze Recipe';
+      const results = document.getElementById('design-results');
+      results.setAttribute('data-description', desc);
+      results.setAttribute('data-date', new Date().toLocaleDateString());
+      window.print();
+    });
     document.querySelectorAll('.variation-bar .btn').forEach(b => {
       b.addEventListener('click', () => doVariation(b.dataset.dir));
     });

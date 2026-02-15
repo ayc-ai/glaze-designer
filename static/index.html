@@ -27,7 +27,7 @@
       <section id="design" class="panel active">
         <div class="form-section">
           <label for="glaze-desc">Describe your dream glaze</label>
-          <textarea id="glaze-desc" rows="4" placeholder="e.g. buttery matte white, food safe&#10;e.g. glossy tenmoku brown for stoneware&#10;e.g. satin blue-green with variegation"></textarea>
+          <textarea id="glaze-desc" rows="2" placeholder="e.g. buttery matte white, food safe — or — satin blue-green with variegation"></textarea>
           <div class="form-row">
             <div class="form-field">
               <label for="clay-body">Clay Body</label>
@@ -80,17 +80,11 @@
             <div id="design-limits"></div>
           </section>
 
-          <div class="result-row">
-            <section class="result-section result-section--half">
-              <h3>Thermal Expansion</h3>
-              <div class="cte-display" id="design-cte"></div>
-              <div class="cte-note" id="design-cte-note"></div>
-            </section>
-            <section class="result-section result-section--half">
-              <h3>Food Safety</h3>
-              <div id="design-food-safety"></div>
-            </section>
-          </div>
+          <section class="result-section">
+            <h3>Safety &amp; Fit</h3>
+            <div id="design-food-safety"></div>
+            <div class="cte-inline"><span class="cte-label">CTE:</span> <span id="design-cte"></span> <span class="cte-note-inline" id="design-cte-note"></span></div>
+          </section>
 
           <section class="result-section" id="design-ingredients-card" style="display:none">
             <h3>How This Recipe Works</h3>
@@ -121,7 +115,7 @@
                 <input type="number" id="scale-weight" value="1000" min="1">
               </div>
               <button class="btn btn-outline" id="scale-btn">Scale</button>
-              <button class="btn btn-outline" onclick="window.print()">Print</button>
+              <button class="btn btn-outline" id="export-btn">Export PDF</button>
             </div>
           </section>
 
@@ -171,17 +165,11 @@
             <p class="section-explainer">Standard oxide ranges for stable cone 6 glazes. Values outside limits aren't necessarily bad — many great glazes intentionally push boundaries for specific effects.</p>
             <div id="analyze-limits"></div>
           </section>
-          <div class="result-row">
-            <section class="result-section result-section--half">
-              <h3>Thermal Expansion</h3>
-              <div class="cte-display" id="analyze-cte"></div>
-              <div class="cte-note" id="analyze-cte-note"></div>
-            </section>
-            <section class="result-section result-section--half">
-              <h3>Food Safety</h3>
-              <div id="analyze-food-safety"></div>
-            </section>
-          </div>
+          <section class="result-section">
+            <h3>Safety &amp; Fit</h3>
+            <div id="analyze-food-safety"></div>
+            <div class="cte-inline"><span class="cte-label">CTE:</span> <span id="analyze-cte"></span> <span class="cte-note-inline" id="analyze-cte-note"></span></div>
+          </section>
 
         </div>
       </section>
