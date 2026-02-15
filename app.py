@@ -539,14 +539,15 @@ def generate_image():
         return jsonify({"success": False, "message": "No description provided."})
 
     prompt = (
-        f"A close-up macro photograph of a ceramic glaze test tile. The glaze is: {description}. "
-        "Shot from above at a slight angle, filling the frame. Show only the glazed ceramic surface — "
-        "no text, no labels, no annotations, no diagrams, no words of any kind. "
-        "Focus on the glaze surface texture, color depth, light reflections, and any visible effects "
-        "like crazing lines, crystals, color breaks, or pooling. "
-        "The test tile is a simple flat or slightly curved piece. Neutral background. "
-        "Natural soft studio lighting. Photorealistic, shot on a macro lens, shallow depth of field. "
-        "Style: ceramic glaze test tile photography as seen on Glazy.org or ceramic studio documentation."
+        f"A photograph of a small vertical ceramic glaze test tile showing: {description}. "
+        "The test tile is a small rectangular piece of stoneware clay, about 3 inches tall, "
+        "hung vertically in a kiln. The glaze has been fired to maturity — it is solid, fused glass "
+        "bonded to the clay body, NOT liquid or wet. The surface should look like fired pottery you "
+        "would see in a ceramics studio. Where the glaze is thin near edges, the bare clay body shows "
+        "through as tan or brown stoneware. The glaze may pool slightly thicker at the bottom of the tile. "
+        "Simple white or gray background, even soft lighting as in a pottery studio photo. "
+        "No text, no labels, no words, no annotations, no diagrams anywhere in the image. "
+        "Documentary style, like a potter's glaze notebook photo. iPhone photo quality, not stylized."
     )
 
     payload = json.dumps({
